@@ -12,7 +12,10 @@ import { useNavigate } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getCameras } from "../services/guardianApi";
+import { unwrapList } from "../services/apiClient";
+import { normalizeCamera } from "../services/dataMappers";
 
 import "../styles/LiveMonitoring.css";
 
@@ -30,7 +33,7 @@ import cam6 from "../assets/images/cam6.jpg";
    Camera Data
 ======================================= */
 
-const cameraFeeds = [
+const fallbackCameraFeeds = [
   {
     id: 1,
     title: "Main Entrance",
@@ -75,58 +78,81 @@ const cameraFeeds = [
 ];
 
 /* =======================================
-   Top Cards
-======================================= */
-
-const stats = [
-  {
-    icon: <FiVideo />,
-    title: "Total Cameras",
-    value: "12",
-    status: "Online",
-    className: "green",
-  },
-
-  {
-    icon: <FiShield />,
-    title: "Active Feeds",
-    value: "12",
-    status: "Live",
-    className: "green",
-  },
-
-  {
-    icon: <FiAlertTriangle />,
-    title: "Alerts Today",
-    value: "8",
-    status: "High Priority",
-    className: "gold",
-  },
-
-  {
-    icon: <FiUsers />,
-    title: "People Detected",
-    value: "24",
-    status: "Now",
-    className: "green",
-  },
-
-  {
-    icon: <FiHardDrive />,
-    title: "Storage Used",
-    value: "68%",
-    status: "2.1 TB / 3.0 TB",
-    className: "green",
-  },
-];
-
-/* =======================================
    Component
 ======================================= */
 
 const LiveMonitoring = () => {
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [cameraFeeds, setCameraFeeds] = useState(fallbackCameraFeeds);
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadCameras() {
+      try {
+        const response = await getCameras();
+        const cameras = unwrapList(response, "cameras").map(normalizeCamera);
+        if (active && cameras.length) {
+          setCameraFeeds(
+            cameras.map((camera) => ({
+              id: camera.id,
+              title: camera.name,
+              image: camera.image,
+              live: camera.status === "Online",
+            }))
+          );
+        }
+      } catch {
+        if (active) setCameraFeeds(fallbackCameraFeeds);
+      }
+    }
+
+    loadCameras();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const activeFeeds = cameraFeeds.filter((camera) => camera.live).length;
+  const stats = [
+    {
+      icon: <FiVideo />,
+      title: "Total Cameras",
+      value: String(cameraFeeds.length),
+      status: "Configured",
+      className: "green",
+    },
+    {
+      icon: <FiShield />,
+      title: "Active Feeds",
+      value: String(activeFeeds),
+      status: "Live",
+      className: "green",
+    },
+    {
+      icon: <FiAlertTriangle />,
+      title: "Alerts Today",
+      value: "--",
+      status: "Open alerts page",
+      className: "gold",
+    },
+    {
+      icon: <FiUsers />,
+      title: "People Detected",
+      value: "--",
+      status: "Detection metric pending",
+      className: "green",
+    },
+    {
+      icon: <FiHardDrive />,
+      title: "Storage Used",
+      value: "68%",
+      status: "Backend metric pending",
+      className: "green",
+    },
+  ];
 
   return (
     <div className="dashboard">
@@ -162,7 +188,7 @@ const LiveMonitoring = () => {
                 <div>
                   <h4>System Active</h4>
 
-                  <p>All cameras operational</p>
+                  <p>{activeFeeds} live feeds online</p>
                 </div>
               </div>
 
@@ -251,7 +277,7 @@ const LiveMonitoring = () => {
 
                       <div className="live-badge">
                         <span className="live-dot"></span>
-                        LIVE
+                        {camera.live ? "LIVE" : "OFFLINE"}
                       </div>
                     </div>
 

@@ -1,5 +1,5 @@
 import "./AlertDetails.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
@@ -23,42 +23,92 @@ import {
   Crosshair,
   Shield,
 } from "lucide-react";
+import {
+  acknowledgeAlert,
+  getAlert,
+  getAlerts,
+  getEvidenceByAlert,
+} from "../services/guardianApi";
+import { unwrapList, unwrapObject } from "../services/apiClient";
+import { normalizeAlert } from "../services/dataMappers";
+
+const fallbackAlert = {
+  id: "ALERT-2025-0730-0012",
+  title: "Intrusion Detected",
+  priority: "high",
+  description:
+    "Unauthorized access detected in restricted area. Person detected climbing over perimeter fence.",
+  status: "active",
+  confidence: 92,
+  type: "Intrusion / Perimeter Breach",
+  date: "Jul 30, 2025",
+  time: "02:14:32 AM",
+  image: alertPreview,
+  cameraId: "CAM-005",
+  cameraName: "North Perimeter Night Cam",
+  location: "Perimeter Fence",
+  building: "Building B",
+};
 
 const AlertDetails = () => {
   const navigate = useNavigate();
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  /* ===========================================
-      Alert Data
-  =========================================== */
+  const [alert, setAlert] = useState(fallbackAlert);
+  const [evidence, setEvidence] = useState([]);
+  const [apiMessage, setApiMessage] = useState("");
 
-  const alert = {
-    id: "ALERT-2025-0730-0012",
+  useEffect(() => {
+    let active = true;
 
-    title: "Intrusion Detected",
+    async function loadAlertDetails() {
+      const selectedAlertId = localStorage.getItem("guardianai-selected-alert-id");
 
-    priority: "HIGH PRIORITY",
+      try {
+        const response = selectedAlertId
+          ? await getAlert(selectedAlertId)
+          : await getAlerts(1);
+        const alertData = selectedAlertId
+          ? unwrapObject(response, "alert")
+          : unwrapList(response, "alerts")[0];
+        const normalizedAlert = normalizeAlert(alertData || fallbackAlert);
 
-    description:
-      "Unauthorized access detected in restricted area. Person detected climbing over perimeter fence.",
+        if (active) {
+          setAlert(normalizedAlert);
+          setApiMessage("");
+        }
 
-    status: "ACTIVE",
+        if (normalizedAlert.id) {
+          const evidenceResponse = await getEvidenceByAlert(normalizedAlert.id);
+          if (active) setEvidence(unwrapList(evidenceResponse, "evidence"));
+        }
+      } catch (error) {
+        if (active) setApiMessage(error.message || "Using fallback alert details.");
+      }
+    }
 
-    confidence: 92,
+    loadAlertDetails();
 
-    type: "Intrusion / Perimeter Breach",
+    return () => {
+      active = false;
+    };
+  }, []);
 
-    date: "Jul 30, 2025",
+  const handleAcknowledge = async () => {
+    const officerId =
+      localStorage.getItem("guardianai-officer-id") ||
+      window.prompt("Officer ID for acknowledgement");
+    if (!officerId) return;
 
-    time: "02:14:32 AM",
+    localStorage.setItem("guardianai-officer-id", officerId);
 
-    image: alertPreview,
-
-    camera: "CAM-005",
-
-    location: "Perimeter Fence",
-
-    building: "Building B",
+    try {
+      await acknowledgeAlert(alert.id, officerId);
+      setAlert((current) => ({ ...current, status: "acknowledged" }));
+      setApiMessage("Alert acknowledged.");
+    } catch (error) {
+      setApiMessage(error.message || "Unable to acknowledge alert.");
+    }
   };
 
   return (
@@ -102,10 +152,10 @@ const AlertDetails = () => {
             <div className="alert-header-actions">
               <button
                 className="resolve-btn"
-                onClick={() => alert("Alert marked as resolved.")}
+                onClick={handleAcknowledge}
               >
                 <Check size={18} />
-                Mark as Resolved
+                Acknowledge
               </button>
 
               <button
@@ -125,6 +175,8 @@ const AlertDetails = () => {
               </button>
             </div>
           </div>
+
+          {apiMessage && <p className="details-api-message">{apiMessage}</p>}
 
           {/* ===================================
             Main Grid
@@ -147,7 +199,9 @@ const AlertDetails = () => {
                   </div>
 
                   <div className="alert-summary-content">
-                    <span className="priority-badge">{alert.priority}</span>
+                    <span className="priority-badge">
+                      {alert.priority.toUpperCase()} PRIORITY
+                    </span>
 
                     <h2>{alert.title}</h2>
 
@@ -179,7 +233,7 @@ const AlertDetails = () => {
                   <div className="status-box">
                     <span>Status</span>
 
-                    <div className="status-active">{alert.status}</div>
+                    <div className="status-active">{alert.status.toUpperCase()}</div>
                   </div>
 
                   <div className="confidence-box">
@@ -233,7 +287,7 @@ const AlertDetails = () => {
                     <div>
                       <span>Detected At</span>
 
-                      <h4>02:14:32 AM</h4>
+                      <h4>{alert.time}</h4>
                     </div>
                   </div>
 
@@ -257,7 +311,7 @@ const AlertDetails = () => {
                     <div>
                       <span>Zone</span>
 
-                      <h4>Restricted Zone B</h4>
+                      <h4>{alert.location}</h4>
                     </div>
                   </div>
                 </div>
@@ -302,7 +356,7 @@ const AlertDetails = () => {
 
                       <span>Confidence</span>
 
-                      <strong>92%</strong>
+                      <strong>{alert.confidence}%</strong>
                     </div>
                   </div>
 
@@ -348,7 +402,7 @@ const AlertDetails = () => {
                     <span className="live-dot"></span>
 
                     <span>
-                      {alert.camera} - {alert.location}
+                      {alert.cameraId} - {alert.location}
                     </span>
                   </div>
 
@@ -365,7 +419,7 @@ const AlertDetails = () => {
                   <div className="location-row">
                     <MapPin size={18} />
 
-                    <span>Perimeter Fence - North Side</span>
+                    <span>{alert.location}</span>
                   </div>
                 </div>
 
@@ -501,23 +555,24 @@ const AlertDetails = () => {
               <button className="snapshot-nav">❮</button>
 
               <div className="snapshot-list">
-                {[
-                  "02:14:20 AM",
-                  "02:14:24 AM",
-                  "02:14:32 AM",
-                  "02:14:36 AM",
-                  "02:14:40 AM",
-                ].map((time, index) => (
+                {(evidence.length ? evidence : [{ timestamp: alert.time }])
+                  .slice(0, 5)
+                  .map((item, index) => {
+                    const time = item.timestamp || item.createdAt || alert.time;
+                    const image = item.imageUrl || item.snapshotUrl || alert.image;
+
+                    return (
                   <div
                     key={index}
-                    className={`snapshot-item ${index === 2 ? "active" : ""}`}
+                    className={`snapshot-item ${index === 0 ? "active" : ""}`}
                     style={{ cursor: "pointer" }}
                   >
-                    <img src={alert.image} alt={time} />
+                    <img src={image} alt={time} />
 
                     <span>{time}</span>
                   </div>
-                ))}
+                    );
+                  })}
               </div>
 
               <button className="snapshot-nav">❯</button>

@@ -3,10 +3,13 @@
 // GuardianAI Police Authority Alerts Dashboard
 // ==========================================
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PoliceSidebar from "../../components/police/PoliceSidebar";
 import PoliceNavbar from "../../components/police/PoliceNavbar";
 import { policeAlerts, incidentStages, priorityConfig } from "../../data/policeData";
+import { getAlerts } from "../../services/guardianApi";
+import { unwrapList } from "../../services/apiClient";
+import { normalizeAlert } from "../../services/dataMappers";
 import {
   ShieldAlert,
   MapPin,
@@ -24,7 +27,6 @@ import {
   User,
   DoorOpen,
   Check,
-  Filter,
 } from "lucide-react";
 
 // CCTV Images
@@ -33,7 +35,6 @@ import cam2 from "../../assets/images/cam2.jpg";
 import cam3 from "../../assets/images/cam3.jpg";
 import cam4 from "../../assets/images/cam4.jpg";
 import cam5 from "../../assets/images/cam5.jpg";
-import cam6 from "../../assets/images/cam6.jpg";
 
 const cameraImages = {
   "CAM-005": cam1,
@@ -43,17 +44,82 @@ const cameraImages = {
   "CAM-033": cam5,
 };
 
+function toPoliceAlert(alert) {
+  const normalized = normalizeAlert(alert);
+
+  return {
+    id: normalized.id,
+    title: normalized.title,
+    priority: normalized.priority === "critical" ? "critical" : normalized.priority,
+    iconType: normalized.type.toLowerCase().includes("vehicle")
+      ? "car"
+      : normalized.type.toLowerCase().includes("crowd")
+        ? "users"
+        : normalized.type.toLowerCase().includes("door")
+          ? "door"
+          : "shield",
+    summary: normalized.description,
+    location: {
+      building: normalized.building || normalized.location,
+      area: normalized.location,
+      address: normalized.location,
+    },
+    cameraId: normalized.cameraId,
+    cameraName: normalized.cameraName,
+    timeDisplay: normalized.time,
+    dateDisplay: normalized.date,
+    fullTime: `${normalized.time}, ${normalized.date}`,
+    confidence: normalized.confidence || 0,
+    detectedBy: "GuardianAI Detection",
+    alertType: normalized.type,
+    assignedOfficer: "Unassigned",
+    status: normalized.status,
+    statusColor: ["resolved", "completed"].includes(normalized.status)
+      ? "#22C55E"
+      : "#EF4444",
+    statusBg: "rgba(239, 68, 68, 0.15)",
+    currentStage: normalized.status === "acknowledged" ? 2 : 1,
+    stageTimes: {
+      "Alert Detected": normalized.time,
+      "AI Verified": normalized.time,
+    },
+  };
+}
+
 function PoliceDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [alerts, setAlerts] = useState(policeAlerts);
   const [searchQuery, setSearchQuery] = useState("");
   const [priorityFilter, setPriorityFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const [typeFilter, setTypeFilter] = useState("all");
   const [selectedAlertId, setSelectedAlertId] = useState(policeAlerts[0].id);
-  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadPoliceAlerts() {
+      try {
+        const response = await getAlerts(50);
+        const nextAlerts = unwrapList(response, "alerts").map(toPoliceAlert);
+        if (active && nextAlerts.length) {
+          setAlerts(nextAlerts);
+          setSelectedAlertId(nextAlerts[0].id);
+        }
+      } catch {
+        if (active) setAlerts(policeAlerts);
+      }
+    }
+
+    loadPoliceAlerts();
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   // Filter alerts by search query & dropdown filters
-  const filteredAlerts = policeAlerts.filter((alertItem) => {
+  const filteredAlerts = alerts.filter((alertItem) => {
     const matchesSearch =
       alertItem.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       alertItem.location.area.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -67,11 +133,16 @@ function PoliceDashboard() {
       statusFilter === "all" ||
       alertItem.status.toLowerCase() === statusFilter.toLowerCase();
 
-    return matchesSearch && matchesPriority && matchesStatus;
+    const matchesType =
+      typeFilter === "all" ||
+      alertItem.title.toLowerCase().includes(typeFilter.toLowerCase()) ||
+      alertItem.alertType.toLowerCase().includes(typeFilter.toLowerCase());
+
+    return matchesSearch && matchesPriority && matchesStatus && matchesType;
   });
 
   const activeAlert =
-    policeAlerts.find((a) => a.id === selectedAlertId) || policeAlerts[0];
+    alerts.find((a) => a.id === selectedAlertId) || alerts[0];
 
   // Helper for rendering alert category icon
   const renderAlertCategoryIcon = (type, priority) => {

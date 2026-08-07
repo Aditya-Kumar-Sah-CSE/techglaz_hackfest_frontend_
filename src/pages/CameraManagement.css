@@ -95,6 +95,12 @@
   gap: 15px;
 }
 
+.camera-api-message {
+  margin: 0 0 18px;
+  color: #f5c542;
+  font-size: .9rem;
+}
+
 /* ==========================================
              Buttons
 ========================================== */
@@ -371,6 +377,129 @@
   color: var(--primary) !important;
 
   border-color: rgba(25,212,107,.45) !important;
+}
+
+/* ==========================================================
+   Modal Form
+========================================================== */
+
+.camera-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 8, 7, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: 24px;
+}
+
+.camera-modal {
+  width: min(640px, 100%);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.35);
+}
+
+.camera-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-label {
+  color: var(--primary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: 6px;
+}
+
+.camera-modal-header h3 {
+  font-size: 1.25rem;
+}
+
+.modal-close-btn {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.camera-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.form-grid input,
+.form-grid select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.045);
+  color: white;
+  outline: none;
+}
+
+.form-grid input:focus,
+.form-grid select:focus {
+  border-color: rgba(25,212,107,.45);
+  box-shadow: 0 0 0 2px rgba(25,212,107,0.16);
+}
+
+.camera-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.cancel-btn,
+.save-camera-btn {
+  padding: 11px 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.cancel-btn {
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+.save-camera-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+}
+
+.save-camera-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
 }
 
 /* ==========================================================

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 // ==========================================
 // AuthContext.jsx
 // GuardianAI Role-Based Authentication
@@ -8,26 +9,37 @@ import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext(null);
 
+function getSavedSession() {
+  const savedRole = localStorage.getItem("guardianai-role");
+  const savedUser = localStorage.getItem("guardianai-user");
+  const savedToken = localStorage.getItem("guardianai-token");
+
+  if (!savedToken || !savedRole || !savedUser) {
+    return { user: null, role: null };
+  }
+
+  try {
+    return {
+      user: JSON.parse(savedUser),
+      role: savedRole,
+    };
+  } catch {
+    localStorage.removeItem("guardianai-token");
+    localStorage.removeItem("guardianai-role");
+    localStorage.removeItem("guardianai-user");
+    localStorage.removeItem("token");
+    return { user: null, role: null };
+  }
+}
+
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [role, setRole] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [savedSession] = useState(() => getSavedSession());
+  const [user, setUser] = useState(savedSession.user);
+  const [role, setRole] = useState(savedSession.role);
 
-  // Restore session from localStorage on mount
-  useEffect(() => {
-    const savedRole = localStorage.getItem("guardianai-role");
-    const savedUser = localStorage.getItem("guardianai-user");
-    const savedToken = localStorage.getItem("guardianai-token");
+  const login = ({ token, user: userData }, fallbackRole) => {
+    const selectedRole = userData?.role || fallbackRole || "admin";
 
-    if (savedToken && savedRole && savedUser) {
-      setRole(savedRole);
-      setUser(JSON.parse(savedUser));
-    }
-    setLoading(false);
-  }, []);
-
-  const login = (userData, selectedRole) => {
-    const token = "guardianai-temp-token-" + Date.now();
     localStorage.setItem("guardianai-token", token);
     localStorage.setItem("guardianai-role", selectedRole);
     localStorage.setItem("guardianai-user", JSON.stringify(userData));
@@ -53,7 +65,7 @@ export function AuthProvider({ children }) {
   const value = {
     user,
     role,
-    loading,
+    loading: false,
     login,
     logout,
     isAuthenticated: !!user,
@@ -74,21 +86,20 @@ export function useAuth() {
 
 // Protected Route component
 export function ProtectedRoute({ children, allowedRole }) {
-  const { isAuthenticated, role, loading } = useAuth();
+  const { isAuthenticated, role } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!loading && !isAuthenticated) {
+    if (!isAuthenticated) {
       navigate("/login", { replace: true });
-    } else if (!loading && allowedRole && role !== allowedRole) {
+    } else if (allowedRole && role !== allowedRole) {
       // Redirect to correct dashboard if wrong role
       navigate(role === "police" ? "/police/dashboard" : "/dashboard", {
         replace: true,
       });
     }
-  }, [loading, isAuthenticated, role, allowedRole, navigate]);
+  }, [isAuthenticated, role, allowedRole, navigate]);
 
-  if (loading) return null;
   if (!isAuthenticated) return null;
   if (allowedRole && role !== allowedRole) return null;
 

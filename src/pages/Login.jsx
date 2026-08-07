@@ -5,6 +5,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { loginUser, registerUser } from "../services/authApi";
 import "./Login.css";
 
 // Images
@@ -16,7 +17,6 @@ import bgPattern from "../assets/images/bg-pattern.png";
 
 // Lucide Icons
 import {
-  User,
   Lock,
   Eye,
   EyeOff,
@@ -29,8 +29,6 @@ import {
   ArrowLeft,
   ChevronRight,
   ChevronLeft,
-  ShieldAlert,
-  Check,
 } from "lucide-react";
 
 function Login() {
@@ -44,10 +42,13 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [authError, setAuthError] = useState("");
+  const [authMessage, setAuthMessage] = useState("");
 
   // Login Form State
   const [loginData, setLoginData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -75,30 +76,82 @@ function Login() {
   };
 
   // Login Button
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setAuthError("");
+    setAuthMessage("");
+    setIsSubmitting(true);
 
-    const userData = {
-      username: loginData.username || (selectedRole === "police" ? "Officer" : "Admin"),
-      fullName: selectedRole === "police" ? "Inspector Singh" : "System Administrator",
-      roleLabel: selectedRole === "police" ? "Police Authority" : "System Administrator",
-    };
+    try {
+      const response = await loginUser({
+        email: loginData.email,
+        password: loginData.password,
+      });
 
-    const targetPath = login(userData, selectedRole);
-    navigate(targetPath);
+      const token = response?.token || response?.accessToken || response?.data?.token;
+      const backendUser = response?.user || response?.data?.user || {};
+      const userData = {
+        email: loginData.email,
+        fullName: backendUser.name || backendUser.fullName || loginData.email,
+        roleLabel:
+          (backendUser.role || selectedRole) === "police"
+            ? "Police Authority"
+            : "System Administrator",
+        ...backendUser,
+      };
+
+      if (!token) {
+        throw new Error("Login succeeded, but no token was returned by the server.");
+      }
+
+      const targetPath = login({ token, user: userData }, selectedRole);
+      navigate(targetPath);
+    } catch (error) {
+      setAuthError(error.message || "Unable to login. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
+    setAuthError("");
+    setAuthMessage("");
 
     if (signupData.password !== signupData.confirmPassword) {
-      alert("Passwords do not match.");
+      setAuthError("Passwords do not match.");
       return;
     }
 
-    console.log(signupData);
+    setIsSubmitting(true);
 
-    // Connect backend later
+    try {
+      await registerUser({
+        name: signupData.fullName,
+        email: signupData.email,
+        password: signupData.password,
+        role: "admin",
+      });
+
+      setAuthMessage("Account created. You can now log in.");
+      setLoginData({
+        email: signupData.email,
+        password: "",
+      });
+      setSignupData({
+        fullName: "",
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+      setSelectedRole("admin");
+      setIsSignup(false);
+    } catch (error) {
+      setAuthError(error.message || "Unable to create account. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -366,17 +419,18 @@ function Login() {
 
               {/* Username Field */}
               <div className="input-group">
-                <label className="input-label font-gold">Username</label>
+                <label className="input-label font-gold">Email</label>
                 <div className="input-box gold-icon-box">
                   <Mail className="input-icon text-gold" size={20} />
                   <input
-                    type="text"
-                    name="username"
-                    placeholder="Enter your username"
-                    value={loginData.username}
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    value={loginData.email}
                     onChange={handleChange}
                     className="login-input"
-                    autoComplete="username"
+                    autoComplete="email"
+                    required
                   />
                 </div>
               </div>
@@ -394,6 +448,7 @@ function Login() {
                     onChange={handleChange}
                     className="login-input"
                     autoComplete="current-password"
+                    required
                   />
                   <button
                     type="button"
@@ -412,9 +467,12 @@ function Login() {
               </div>
 
               {/* Login Button */}
-              <button type="submit" className="gold-login-button">
+              {authError && <p className="auth-feedback auth-error">{authError}</p>}
+              {authMessage && <p className="auth-feedback auth-success">{authMessage}</p>}
+
+              <button type="submit" className="gold-login-button" disabled={isSubmitting}>
                 <Shield size={20} />
-                <span>Login</span>
+                <span>{isSubmitting ? "Logging in..." : "Login"}</span>
               </button>
 
               {/* OTP Information Card */}
@@ -600,9 +658,12 @@ function Login() {
               {/* Create Account Button */}
               {/* ========================= */}
 
-              <button type="submit" className="login-button">
+              {authError && <p className="auth-feedback auth-error">{authError}</p>}
+              {authMessage && <p className="auth-feedback auth-success">{authMessage}</p>}
+
+              <button type="submit" className="login-button" disabled={isSubmitting}>
                 <UserPlus size={20} />
-                <span>Create Account</span>
+                <span>{isSubmitting ? "Creating..." : "Create Account"}</span>
               </button>
 
               {/* Divider */}

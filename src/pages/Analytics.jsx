@@ -1,6 +1,6 @@
 import "./Analytics.css";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
@@ -16,12 +16,20 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
+import {
+  getAlerts,
+  getCameras,
+  getIncidents,
+  getOfficers,
+} from "../services/guardianApi";
+import { unwrapList } from "../services/apiClient";
+import { normalizeAlert, normalizeCamera, normalizeOfficer } from "../services/dataMappers";
 
 /* ===========================
    Dashboard Statistics
 =========================== */
 
-const stats = [
+const fallbackStats = [
   {
     title: "Total Cameras",
     value: "48",
@@ -68,7 +76,96 @@ const lineData = [
 
 function Analytics() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [stats, setStats] = useState(fallbackStats);
+  const [topCameras, setTopCameras] = useState([
+    { name: "Main Entrance", alerts: 128 },
+    { name: "Parking Area", alerts: 96 },
+    { name: "Building - A Lobby", alerts: 74 },
+    { name: "Back Gate", alerts: 62 },
+    { name: "Cafeteria", alerts: 48 },
+  ]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadAnalytics() {
+      const [camerasResult, alertsResult, incidentsResult, officersResult] =
+        await Promise.allSettled([
+          getCameras(),
+          getAlerts(100),
+          getIncidents(),
+          getOfficers(),
+        ]);
+
+      if (!active) return;
+
+      const cameras =
+        camerasResult.status === "fulfilled"
+          ? unwrapList(camerasResult.value, "cameras").map(normalizeCamera)
+          : [];
+      const alerts =
+        alertsResult.status === "fulfilled"
+          ? unwrapList(alertsResult.value, "alerts").map(normalizeAlert)
+          : [];
+      const incidents =
+        incidentsResult.status === "fulfilled"
+          ? unwrapList(incidentsResult.value, "incidents")
+          : [];
+      const officers =
+        officersResult.status === "fulfilled"
+          ? unwrapList(officersResult.value, "officers").map(normalizeOfficer)
+          : [];
+
+      if (cameras.length || alerts.length || incidents.length || officers.length) {
+        setStats([
+          {
+            title: "Total Cameras",
+            value: String(cameras.length),
+            change: `${cameras.filter((camera) => camera.status === "Online").length} online`,
+            icon: Camera,
+            positive: true,
+          },
+          {
+            title: "Total Alerts",
+            value: String(alerts.length),
+            change: "Loaded from alerts API",
+            icon: ShieldAlert,
+            positive: true,
+          },
+          {
+            title: "Open Incidents",
+            value: String(incidents.length),
+            change: "Loaded from incidents API",
+            icon: Users,
+            positive: true,
+          },
+          {
+            title: "Available Officers",
+            value: String(officers.filter((officer) => officer.available).length),
+            change: `${officers.length} total officers`,
+            icon: Clock,
+            positive: true,
+          },
+        ]);
+
+        if (cameras.length) {
+          setTopCameras(
+            cameras.slice(0, 5).map((camera) => ({
+              name: camera.name,
+              alerts: alerts.filter((alert) => alert.cameraId === camera.id).length,
+            }))
+          );
+        }
+      }
+    }
+
+    loadAnalytics();
+
+    return () => {
+      active = false;
+    };
+  }, []);
   return (
     <div className="dashboard">
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
@@ -257,28 +354,7 @@ function Analytics() {
               <h3>Top Active Cameras</h3>
 
               <div className="camera-list">
-                {[
-                  {
-                    name: "Main Entrance",
-                    alerts: 128,
-                  },
-                  {
-                    name: "Parking Area",
-                    alerts: 96,
-                  },
-                  {
-                    name: "Building - A Lobby",
-                    alerts: 74,
-                  },
-                  {
-                    name: "Back Gate",
-                    alerts: 62,
-                  },
-                  {
-                    name: "Cafeteria",
-                    alerts: 48,
-                  },
-                ].map((camera, index) => (
+                {topCameras.map((camera, index) => (
                   <div
                     className="camera-item"
                     key={index}

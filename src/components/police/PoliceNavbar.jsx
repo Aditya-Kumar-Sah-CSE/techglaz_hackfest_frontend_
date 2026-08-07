@@ -3,7 +3,7 @@
 // GuardianAI Police Command Navbar
 // ==========================================
 
-import { Menu, Search, Bell, Siren, Shield, ChevronDown, Phone, User } from "lucide-react";
+import { Menu, Search, Bell, Phone, User } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import "../../styles/dashboard.css";
 import "../../pages/police/PoliceDashboard.css";
@@ -67,8 +67,8 @@ function PoliceNavbar({ setSidebarOpen, searchQuery, setSearchQuery, onEmergency
           </div>
 
           <div className="profile-info">
-            <h4>Inspector Rajesh</h4>
-            <p>Delhi Police</p>
+            <h4>{officerName}</h4>
+            <p>{officerRole}</p>
           </div>
         </div>
       </div>
