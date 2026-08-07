@@ -1,0 +1,1892 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* =======================================================
+   PART 1 - GLOBAL RESET & BODY
+======================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #050505;
+    --card: rgba(17, 17, 17, 0.88);
+
+    --gold: #d4af37;
+    --gold-light: #f8d66d;
+
+    --green: #39d353;
+    --green-dark: #1ea83b;
+
+    --text: #ffffff;
+    --text-light: #c8c8c8;
+
+    --border: rgba(212, 175, 55, 0.35);
+
+    --shadow-green: 0 0 20px rgba(57, 211, 83, 0.25);
+    --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.25);
+
+    --transition: all 0.35s ease;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Poppins", sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) #0b0b0b;
+}
+
+body {
+    background: #050505;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: var(--transition);
+}
+
+input {
+    outline: none;
+    border: none;
+    background: transparent;
+    color: var(--text);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    user-select: none;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0b0b0b;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--gold), var(--green));
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--green), var(--gold));
+}
+
+/* =======================================================
+   PART 2 - MAIN LAYOUT
+======================================================= */
+
+.login-container {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    background: #050505;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Gold Divider */
+.login-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            transparent,
+            var(--gold),
+            var(--gold-light),
+            var(--gold),
+            transparent);
+    box-shadow: 0 0 12px rgba(212, 175, 55, .5);
+    z-index: 10;
+}
+
+/* =========================
+   Left Panel
+========================= */
+
+.left-panel {
+    width: 50%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    padding: 24px 32px 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: rgba(0, 0, 0, .55);
+}
+
+/* =========================
+   Right Panel
+========================= */
+
+.right-panel {
+    width: 50%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 32px;
+    background: rgba(5, 5, 5, .92);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Background Glow */
+.left-panel::before,
+.right-panel::before {
+    content: "";
+    position: absolute;
+    width: min(500px, 80vw);
+    height: min(500px, 80vw);
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: .15;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.left-panel::before {
+    background: var(--green);
+    top: -180px;
+    left: -180px;
+}
+
+.right-panel::before {
+    background: var(--gold);
+    bottom: -220px;
+    right: -180px;
+}
+
+.left-panel>*,
+.right-panel>* {
+    position: relative;
+    z-index: 2;
+}
+
+/* =========================
+   Role Selector Card Cards
+========================= */
+.role-selector-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.role-selector-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: left;
+    margin: 0;
+}
+
+.role-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    width: 100%;
+}
+
+.role-card-item {
+    position: relative;
+    background: #090e17;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    min-height: 210px;
+}
+
+.role-card-item:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    background: #0d1522;
+}
+
+.role-card-item.selected-police {
+    border: 1.5px solid #22c55e !important;
+    background: rgba(34, 197, 94, 0.03) !important;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.15), inset 0 0 15px rgba(34, 197, 94, 0.04);
+}
+
+.role-card-item.selected-admin {
+    border: 1.5px solid #f5c542 !important;
+    background: rgba(245, 197, 66, 0.03) !important;
+    box-shadow: 0 0 20px rgba(245, 197, 66, 0.15), inset 0 0 15px rgba(245, 197, 66, 0.04);
+}
+
+/* Radio Button in Top Right */
+.role-card-radio {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+}
+
+.radio-outer {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.8px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.radio-outer.active-green {
+    border-color: #22c55e;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+.radio-outer.active-gold {
+    border-color: #f5c542;
+    box-shadow: 0 0 10px rgba(245, 197, 66, 0.5);
+}
+
+.radio-inner-green {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 6px #22c55e;
+}
+
+.radio-inner-gold {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #f5c542;
+    box-shadow: 0 0 6px #f5c542;
+}
+
+/* Icon Container */
+.role-card-icon-wrap {
+    margin-top: 4px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Title & Description */
+.role-card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+}
+
+.role-card-desc {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.45;
+    margin: 0 0 14px 0;
+    flex-grow: 1;
+}
+
+/* Recommended Badge */
+.recommended-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    margin-top: auto;
+}
+
+/* =======================================================
+   PART 3 - LEFT PANEL
+======================================================= */
+
+.left-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, .15),
+            rgba(0, 0, 0, .45),
+            rgba(0, 0, 0, .75));
+    z-index: 1;
+}
+
+/* Radar Background */
+.radar-bg {
+    position: absolute;
+    top: -80px;
+    left: -40px;
+    width: min(85%, 500px);
+    opacity: .18;
+    pointer-events: none;
+    animation: radarRotate 30s linear infinite;
+}
+
+/* CCTV Camera */
+
+
+/* Branding */
+.brand-section {
+    margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.guardian-logo {
+    width: clamp(50px, 5vw, 70px);
+    margin-bottom: 6px;
+    filter: drop-shadow(0 0 18px rgba(212, 175, 55, .30));
+}
+
+.brand-title {
+    font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: .5px;
+    line-height: 1.1;
+}
+
+.brand-title span {
+    color: var(--green);
+    text-shadow: 0 0 12px rgba(57, 211, 83, .45);
+}
+
+.brand-tagline {
+    margin-top: 2px;
+    color: var(--gold-light);
+    font-size: clamp(.9rem, 1.5vw, 1.15rem);
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.gold-line {
+    margin-top: 6px;
+    width: min(220px, 60%);
+    height: 2px;
+    border-radius: 10px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--gold-light),
+            var(--gold),
+            var(--gold-light),
+            transparent);
+    box-shadow: 0 0 14px rgba(212, 175, 55, .6);
+}
+
+/* =======================================================
+   PART 4 - FEATURE CARDS
+======================================================= */
+
+.feature-list {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.feature-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    background: rgba(18, 18, 18, .55);
+    border: 1px solid rgba(212, 175, 55, .18);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateX(8px);
+    border-color: rgba(212, 175, 55, .55);
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, .45),
+        0 0 20px rgba(57, 211, 83, .18);
+}
+
+.feature-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    color: var(--gold);
+    background: linear-gradient(135deg,
+            rgba(212, 175, 55, .14),
+            rgba(57, 211, 83, .10));
+    border: 1px solid rgba(212, 175, 55, .35);
+    box-shadow: 0 0 15px rgba(212, 175, 55, .18);
+    transition: var(--transition);
+}
+
+.feature-card:hover .feature-icon {
+    color: var(--green);
+    border-color: var(--green);
+    transform: scale(1.06);
+    box-shadow: 0 0 25px rgba(57, 211, 83, .35);
+}
+
+.feature-content {
+    flex: 1;
+    overflow-wrap: break-word;
+}
+
+.feature-content h3 {
+    color: var(--green);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.feature-content p {
+    color: var(--text-light);
+    font-size: .8rem;
+    line-height: 1.35;
+}
+
+/* =======================================================
+   PART 5 - CITY SKYLINE
+======================================================= */
+
+.city-container {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 95px;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.city-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, .95) 0%,
+            rgba(0, 0, 0, .70) 30%,
+            rgba(0, 0, 0, .25) 70%,
+            transparent 100%);
+    z-index: 2;
+}
+
+.city-skyline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom center;
+    opacity: .85;
+    filter: brightness(.75) contrast(1.1) drop-shadow(0 0 18px rgba(57, 211, 83, .18));
+    animation: cityFloat 8s ease-in-out infinite;
+}
+
+.city-container::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 60px;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 120px;
+    background: radial-gradient(ellipse,
+            rgba(57, 211, 83, .18),
+            transparent 70%);
+    filter: blur(45px);
+    z-index: 1;
+}
+
+.city-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--gold-light),
+            var(--gold),
+            var(--gold-light),
+            transparent);
+    box-shadow: 0 0 15px rgba(212, 175, 55, .5);
+    z-index: 3;
+}
+
+/* =======================================================
+   PART 6 - LOGIN CARD
+======================================================= */
+
+.login-card {
+    width: min(100%, 540px);
+    margin: auto;
+    padding: 28px 24px;
+    background: #090e17;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, .65),
+        0 0 25px rgba(34, 197, 94, .08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: var(--transition);
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.login-card::-webkit-scrollbar {
+    width: 5px;
+}
+
+.login-card::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.login-card::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, .5);
+    border-radius: 20px;
+}
+
+.login-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--gold-light),
+            var(--gold),
+            var(--gold-light),
+            transparent);
+}
+
+.login-card::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    top: -120px;
+    right: -120px;
+    background: rgba(57, 211, 83, .08);
+    filter: blur(80px);
+    z-index: 0;
+}
+
+.login-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 175, 55, .45);
+    box-shadow:
+        0 28px 65px rgba(0, 0, 0, .55),
+        0 0 35px rgba(212, 175, 55, .22);
+}
+
+.login-card>* {
+    position: relative;
+    z-index: 2;
+}
+
+.login-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-bottom: 12px;
+    color: var(--gold);
+    background: linear-gradient(135deg,
+            rgba(212, 175, 55, .18),
+            rgba(57, 211, 83, .12));
+    border: 1px solid rgba(212, 175, 55, .35);
+    box-shadow: 0 0 20px rgba(212, 175, 55, .18);
+}
+
+.login-title {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.login-subtitle {
+    font-size: .88rem;
+    color: var(--text-light);
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    max-width: 320px;
+    overflow-wrap: break-word;
+}
+
+/* =======================================================
+   PART 7 - INPUT FIELDS
+======================================================= */
+
+.input-group {
+    width: 100%;
+    margin-bottom: 14px;
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--gold-light);
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.input-box {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid rgba(212, 175, 55, .18);
+    transition: var(--transition);
+}
+
+.input-box:hover {
+    border-color: rgba(212, 175, 55, .45);
+    box-shadow: 0 0 18px rgba(212, 175, 55, .12);
+}
+
+.input-box:focus-within {
+    border-color: var(--green);
+    box-shadow: 0 0 18px rgba(57, 211, 83, .22);
+}
+
+.input-icon {
+    color: var(--gold);
+    margin-right: 12px;
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.input-box:focus-within .input-icon {
+    color: var(--green);
+}
+
+.login-input {
+    flex: 1;
+    height: 100%;
+    background: transparent;
+    color: #fff;
+    font-size: 0.95rem;
+    border: none;
+    outline: none;
+}
+
+.login-input::placeholder {
+    color: #777;
+}
+
+/* Autofill styling overrides */
+.login-input:-webkit-autofill,
+.login-input:-webkit-autofill:hover,
+.login-input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #fff;
+    -webkit-box-shadow: 0 0 0 1000px #111 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.password-toggle {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--gold);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.password-toggle:hover {
+    color: var(--green);
+    background: rgba(57, 211, 83, .10);
+    transform: rotate(10deg);
+}
+
+.password-note {
+    margin-top: 8px;
+    margin-left: 4px;
+    color: var(--text-light);
+    font-size: .8rem;
+    line-height: 1.35;
+}
+
+.forgot-password {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -6px;
+    margin-bottom: 18px;
+}
+
+.forgot-password a {
+    color: var(--gold-light);
+    font-size: .88rem;
+    transition: var(--transition);
+}
+
+.forgot-password a:hover {
+    color: var(--green);
+    text-decoration: underline;
+}
+
+/* =======================================================
+   PART 8 - BUTTONS
+======================================================= */
+
+.login-button {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 4px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg,
+            #f7d774,
+            #d4af37,
+            #b8860b);
+    color: #111;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: .5px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: all .35s ease;
+    box-shadow: 0 12px 25px rgba(212, 175, 55, .25);
+}
+
+/* Shine Effect */
+.login-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, .55),
+            transparent);
+    transform: skewX(-25deg);
+    transition: left .7s ease;
+}
+
+.login-button:hover::before {
+    left: 130%;
+}
+
+.login-button:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 18px 35px rgba(212, 175, 55, .35),
+        0 0 18px rgba(212, 175, 55, .20);
+}
+
+.login-button:active {
+    transform: scale(.98);
+}
+
+.login-button svg {
+    transition: .3s;
+}
+
+.login-button:hover svg {
+    transform: rotate(-10deg) scale(1.05);
+}
+
+.otp-note {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 10px 12px;
+    font-size: .8rem;
+    border-radius: 12px;
+    background: rgba(57, 211, 83, .08);
+    border: 1px solid rgba(57, 211, 83, .20);
+    color: var(--green);
+    line-height: 1.4;
+    text-align: center;
+}
+
+.otp-note svg {
+    flex-shrink: 0;
+    color: var(--green);
+}
+
+/* =======================================================
+   PART 9 - OR DIVIDER & SIGN UP
+======================================================= */
+
+.or-divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 14px 0;
+}
+
+.or-divider::before,
+.or-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(212, 175, 55, .35),
+            transparent);
+}
+
+.or-divider span {
+    margin: 0 14px;
+    color: var(--gold-light);
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.signup-section {
+    width: 100%;
+    text-align: center;
+}
+
+.signup-title {
+    color: #fff;
+    font-size: .95rem;
+    margin-bottom: 10px;
+}
+
+.signup-button {
+    width: 100%;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 14px;
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.signup-button:hover {
+    background: linear-gradient(135deg,
+            rgba(212, 175, 55, .15),
+            rgba(57, 211, 83, .10));
+    color: #fff;
+    border-color: var(--green);
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(57, 211, 83, .22);
+}
+
+.signup-button svg {
+    transition: .3s;
+}
+
+.signup-button:hover svg {
+    transform: scale(1.1);
+    color: var(--green);
+}
+
+/* =========================
+   Footer
+========================= */
+
+.login-footer {
+    margin-top: 14px;
+    font-size: .75rem;
+    width: 100%;
+    text-align: center;
+    color: #8f8f8f;
+    line-height: 1.6;
+}
+
+.login-footer p {
+    margin: 4px 0;
+}
+
+.login-footer strong {
+    color: var(--gold-light);
+}
+
+.login-footer svg {
+    color: var(--green);
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 6px;
+    color: var(--gold-light);
+    font-weight: 600;
+}
+
+.footer-text {
+    color: #8f8f8f;
+    font-size: .8rem;
+}
+
+/* =======================================================
+   PART 10 - ANIMATIONS
+======================================================= */
+
+@keyframes radarRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes cameraFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes cityFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(57, 211, 83, .18);
+    }
+
+    50% {
+        box-shadow: 0 0 28px rgba(57, 211, 83, .35);
+    }
+}
+
+@keyframes goldPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(212, 175, 55, .15);
+    }
+
+    50% {
+        box-shadow: 0 0 28px rgba(212, 175, 55, .40);
+    }
+}
+
+/* Apply Animations */
+.brand-section {
+    animation: fadeUp .9s ease;
+}
+
+.feature-list {
+    animation: fadeUp 1.1s ease;
+}
+
+.login-card {
+    animation: fadeUp .9s ease;
+}
+
+.login-icon {
+    animation: goldPulse 3s infinite;
+}
+
+.feature-icon {
+    animation: glowPulse 4s infinite;
+}
+
+.city-container {
+    animation: fadeIn 1.5s ease;
+}
+
+.guardian-logo {
+    animation: fadeIn 1.2s ease;
+}
+
+.login-button {
+    animation: fadeUp 1.2s ease;
+}
+
+.signup-button {
+    animation: fadeUp 1.35s ease;
+}
+
+.feature-card,
+.login-card,
+.login-button,
+.signup-button,
+.input-box {
+    will-change: transform, box-shadow;
+}
+
+/* =======================================================
+   PART 11 - RESPONSIVE DESIGN
+======================================================= */
+
+/* Desktop Navigation Default State */
+.next-button,
+.back-button {
+    display: none !important;
+}
+
+/* =========================
+   Large Tablets & Laptops
+========================= */
+@media (max-width: 1200px) {
+    .left-panel {
+        padding: 24px 24px 90px;
+    }
+
+    .brand-title {
+        font-size: clamp(1.8rem, 2.2vw, 2.2rem);
+    }
+
+    .cctv-camera {
+        width: clamp(110px, 9vw, 130px);
+    }
+
+    .guardian-logo {
+        width: clamp(50px, 4vw, 60px);
+    }
+
+    .feature-list {
+        max-width: 360px;
+    }
+
+    .login-card {
+        max-width: 540px;
+        padding: 24px 20px;
+    }
+}
+
+/* =========================
+   Tablets (Stacked Viewport)
+========================= */
+@media (max-width: 992px) {
+    .login-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    .login-container::after {
+        display: none;
+    }
+
+    .left-panel,
+    .right-panel {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+    }
+
+    .left-panel {
+        padding: 40px 24px 120px;
+    }
+
+    .right-panel {
+        padding: 40px 24px;
+    }
+
+    .login-card {
+        max-width: 540px;
+        margin: 20px auto;
+    }
+}
+
+/* =========================
+   Mobile Devices (Slider Navigation)
+========================= */
+@media (max-width: 768px) {
+    .login-container {
+        position: relative;
+        overflow: hidden;
+        height: 100vh;
+        height: 100dvh;
+    }
+
+    .left-panel,
+    .right-panel {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        transition: transform .45s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Slider Position States */
+    .left-panel {
+        transform: translateX(0);
+        padding: 24px 20px 140px;
+    }
+
+    .right-panel {
+        transform: translateX(100%);
+        padding: 60px 16px 40px;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .login-container.show-login .left-panel {
+        transform: translateX(-100%);
+    }
+
+    .login-container.show-login .right-panel {
+        transform: translateX(0);
+    }
+
+    /* CCTV & Branding adjustments */
+    .cctv-camera {
+        width: 130px;
+    }
+
+    .radar-bg {
+        width: 90%;
+    }
+
+    .brand-title {
+        font-size: 2.1rem;
+    }
+
+    .guardian-logo {
+        width: 60px;
+    }
+
+    .brand-tagline {
+        font-size: 0.98rem;
+    }
+
+    .city-container {
+        height: 110px;
+    }
+
+    .feature-list {
+        max-width: 100%;
+    }
+
+    .feature-card {
+        padding: 12px 14px;
+        gap: 14px;
+    }
+
+    /* Login Card mobile adjustments */
+    .login-card {
+        width: 100%;
+        max-width: 540px;
+        padding: 24px 20px;
+        border-radius: 24px;
+        margin: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .login-title {
+        font-size: 1.5rem;
+    }
+
+    /* Mobile Buttons Visibility Controllers */
+    .login-container:not(.show-login) .next-button {
+        display: flex !important;
+    }
+
+    .login-container.show-login .next-button {
+        display: none !important;
+    }
+
+    .login-container.show-login .back-button {
+        display: flex !important;
+    }
+
+    .login-container:not(.show-login) .back-button {
+        display: none !important;
+    }
+
+    /* Next Button (FAB Behavior) */
+    .next-button {
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        right: 20px;
+        bottom: 24px;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        border: 1px solid rgba(212, 175, 55, .45);
+        background: linear-gradient(135deg, #f7d774, #d4af37, #b8860b);
+        color: #111;
+        cursor: pointer;
+        box-shadow:
+            0 8px 20px rgba(212, 175, 55, .35),
+            0 0 35px rgba(212, 175, 55, .18);
+        transition: all .35s ease;
+        z-index: 100;
+    }
+
+    .next-button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow:
+            0 12px 25px rgba(212, 175, 55, .50),
+            0 0 45px rgba(212, 175, 55, .30);
+    }
+
+    .next-button svg {
+        transition: transform .35s ease;
+    }
+
+    .next-button:hover svg {
+        transform: translateX(3px);
+    }
+
+    /* Back Button Placement */
+    .back-button {
+        display: flex;
+
+        
+
+        z-index: 100;
+
+        justify-content: center;
+        align-items: center;
+
+        width: 46px;
+        height: 46px;
+
+        border-radius: 50%;
+
+        background: rgba(18, 18, 18, .95);
+
+        border: 1px solid rgba(212, 175, 55, .35);
+
+        color: var(--gold);
+
+        cursor: pointer;
+
+        transition: .35s ease;
+
+        box-shadow: 0 0 14px rgba(212, 175, 55, .15);
+
+        margin-bottom: 16px;
+
+        align-self: flex-start;
+
+        flex-shrink: 0;
+    }
+
+    .back-button:hover {
+        color: var(--green);
+        border-color: var(--green);
+        transform: translateX(-3px);
+        box-shadow: 0 0 22px rgba(57, 211, 83, .35);
+    }
+
+    .back-button svg {
+        transition: .35s;
+    }
+
+    .back-button:hover svg {
+        transform: translateX(-3px);
+    }
+}
+
+/* =========================
+   Small Phones
+========================= */
+@media (max-width: 576px) {
+    .left-panel {
+        padding: 20px 16px 120px;
+    }
+
+    .cctv-camera {
+        width: 110px;
+    }
+
+    .brand-title {
+        font-size: 1.85rem;
+    }
+
+    .guardian-logo {
+        width: 52px;
+    }
+
+    .brand-tagline {
+        font-size: .88rem;
+    }
+
+    .city-container {
+        height: 90px;
+    }
+
+    .feature-card {
+        padding: 10px 12px;
+        gap: 12px;
+    }
+
+    .feature-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+    }
+
+    .feature-content h3 {
+        font-size: 0.9rem;
+    }
+
+    .feature-content p {
+        font-size: .76rem;
+    }
+
+    .login-card {
+        padding: 20px 16px;
+        border-radius: 20px;
+    }
+
+    .login-title {
+        font-size: 1.4rem;
+    }
+
+    .login-subtitle {
+        font-size: .82rem;
+        margin-bottom: 12px;
+    }
+
+    .input-box {
+        height: 46px;
+        padding: 0 14px;
+        border-radius: 12px;
+    }
+
+    .input-icon {
+        margin-right: 10px;
+    }
+
+    .login-button,
+    .signup-button {
+        height: 46px;
+        border-radius: 12px;
+        font-size: .9rem;
+    }
+}
+
+/* =========================
+   Extra Small Phones
+========================= */
+@media (max-width: 400px) {
+    .left-panel {
+        padding: 16px 12px 105px;
+    }
+
+    .cctv-camera {
+        width: 95px;
+    }
+
+    .brand-title {
+        font-size: 1.6rem;
+    }
+
+    .guardian-logo {
+        width: 45px;
+    }
+
+    .brand-tagline {
+        font-size: .82rem;
+    }
+
+    .city-container {
+        height: 75px;
+    }
+
+    .feature-content h3 {
+        font-size: .85rem;
+    }
+
+    .feature-content p {
+        font-size: .72rem;
+    }
+
+    .login-title {
+        font-size: 1.25rem;
+    }
+
+    .login-subtitle {
+        font-size: .78rem;
+    }
+
+    .otp-note {
+        font-size: .75rem;
+        padding: 8px 10px;
+    }
+}
+
+/* =======================================================
+   PART 12 - HEIGHT RESPONSIVENESS (VIRTUAL KEYBOARD ACTIVE)
+======================================================= */
+
+/* Hide non-essential graphics to make space for the forms */
+@media (max-height: 720px) {
+    .cctv-camera {
+        display: none !important;
+    }
+
+    .brand-section {
+        margin-top: 15px;
+    }
+
+    .left-panel {
+        justify-content: flex-start;
+        padding-top: 20px;
+    }
+}
+
+@media (max-height: 600px) {
+    .radar-bg {
+        display: none;
+    }
+
+    .feature-list {
+        gap: 6px;
+    }
+
+    .feature-card {
+        padding: 8px 10px;
+    }
+
+    .city-container {
+        display: none;
+    }
+
+    .left-panel {
+        padding-bottom: 20px;
+    }
+}
+
+/* =======================================================
+   PART 13 - FINAL POLISH
+======================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+img {
+    image-rendering: auto;
+    -webkit-user-drag: none;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: .65;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+.login-card,
+.feature-card,
+.input-box,
+.login-button,
+.signup-button {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+::selection {
+    background: rgba(57, 211, 83, .30);
+    color: #fff;
+}
+
+.login-card form {
+    width: 100%;
+}
+
+.login-card::-webkit-scrollbar {
+    width: 6px;
+}
+
+.login-card::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.login-card::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--gold), var(--green));
+    border-radius: 20px;
+}
+
+/* =========================
+   Reduce Motion Accessability
+========================= */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .radar-bg,
+    .cctv-camera,
+    .city-skyline {
+        animation: none !important;
+    }
+}
+
+/* =========================
+   Print support
+========================= */
+@media print {
+    .left-panel,
+    .right-panel {
+        width: 100%;
+        box-shadow: none;
+        background: #fff;
+        color: #000;
+    }
+
+    .login-button,
+    .signup-button {
+        border: 1px solid #000;
+        color: #000;
+        background: #fff;
+    }
+}
+
+/* =======================================================
+   IMAGE 2 TARGET STYLES - 100% FIDELITY
+======================================================= */
+
+/* Police Login Header */
+.police-login-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 22px;
+    width: 100%;
+}
+
+.gold-user-avatar-glow {
+    position: relative;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 197, 66, 0.22) 0%, rgba(245, 197, 66, 0.05) 65%, transparent 85%);
+    border: 1px solid rgba(245, 197, 66, 0.4);
+    box-shadow: 0 0 25px rgba(245, 197, 66, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+
+.welcome-heading {
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 4px 0 6px;
+    letter-spacing: -0.5px;
+}
+
+.welcome-sub {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin: 0;
+}
+
+.role-selector-label {
+    font-size: 0.92rem !important;
+    font-weight: 600 !important;
+    color: #f5c542 !important;
+    text-align: left;
+    margin-bottom: 12px;
+}
+
+/* Label & Input Overrides */
+.font-gold {
+    color: #f5c542 !important;
+    font-weight: 600 !important;
+    font-size: 0.88rem !important;
+    margin-bottom: 6px;
+}
+
+.text-gold {
+    color: #f5c542 !important;
+}
+
+.gold-icon-box {
+    background: #0d1420 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    height: 48px !important;
+    padding: 0 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    transition: all 0.25s ease;
+}
+
+.gold-icon-box:focus-within {
+    border-color: #f5c542 !important;
+    box-shadow: 0 0 14px rgba(245, 197, 66, 0.22) !important;
+}
+
+.gold-icon-box input {
+    color: #ffffff !important;
+    font-size: 0.9rem !important;
+}
+
+.gold-icon-box input::placeholder {
+    color: #64748b !important;
+}
+
+.forgot-link-gold {
+    color: #f5c542 !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.forgot-link-gold:hover {
+    color: #ffffff !important;
+    text-decoration: underline;
+}
+
+.text-right {
+    text-align: right;
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 18px;
+}
+
+/* Gold Login Button */
+.gold-login-button {
+    width: 100%;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f7d774 0%, #f5c542 50%, #d4af37 100%);
+    color: #000000;
+    font-size: 0.95rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(245, 197, 66, 0.35);
+    transition: all 0.25s ease;
+    margin-bottom: 16px;
+}
+
+.gold-login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 28px rgba(245, 197, 66, 0.55);
+}
+
+/* OTP Banner */
+.otp-note-banner {
+    width: 100%;
+    background: rgba(34, 197, 94, 0.06);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #22c55e;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+.otp-note-banner span {
+    color: #22c55e;
+    font-weight: 500;
+}
+
+.font-gold span {
+    color: #f5c542 !important;
+}
+
+/* Sign Up Button */
+.create-account-btn {
+    width: 100%;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1.5px solid #f5c542;
+    color: #f5c542;
+    font-size: 0.92rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.create-account-btn:hover {
+    background: rgba(245, 197, 66, 0.12);
+    box-shadow: 0 0 18px rgba(245, 197, 66, 0.3);
+    transform: translateY(-2px);
+}
+
+.signup-footer-text {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    text-align: center;
+}

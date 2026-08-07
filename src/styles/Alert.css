@@ -1,0 +1,1199 @@
+/* =======================================================
+   ALERT PAGE - PART 1
+   Header + Statistics Cards
+======================================================= */
+
+:root{
+  --alert-bg:#0b1020;
+  --alert-card:#141c2c;
+  --alert-card2:#1b2436;
+  --alert-border:rgba(255,255,255,.06);
+
+  --green:#22c55e;
+  --green-bg:rgba(34,197,94,.12);
+
+  --red:#ef4444;
+  --red-bg:rgba(239,68,68,.12);
+
+  --orange:#f97316;
+  --orange-bg:rgba(249,115,22,.12);
+
+  --yellow:#eab308;
+  --yellow-bg:rgba(234,179,8,.12);
+
+  --text:#ffffff;
+  --muted:#9ca3af;
+}
+
+/* =======================================================
+   Alerts Header
+======================================================= */
+
+.alerts-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:24px;
+    margin-bottom:30px;
+}
+
+/* Left */
+
+.alerts-heading{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.alerts-icon{
+    width:82px;
+    height:82px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:var(--red-bg);
+    border:2px solid rgba(239,68,68,.25);
+    color:var(--red);
+    flex-shrink:0;
+}
+
+.alerts-heading h1{
+    font-size:2.2rem;
+    color:var(--text);
+    margin-bottom:8px;
+    font-weight:700;
+}
+
+.alerts-heading p{
+    color:var(--muted);
+    font-size:1rem;
+}
+
+/* =======================================================
+   System Status Card
+======================================================= */
+
+.system-status-card{
+    width:360px;
+    min-height:88px;
+    border-radius:18px;
+    background:linear-gradient(
+        135deg,
+        rgba(20,45,35,.95),
+        rgba(18,36,30,.95)
+    );
+    border:1px solid rgba(34,197,94,.15);
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 22px;
+}
+
+.system-status-left{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.status-icon{
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    background:rgba(34,197,94,.15);
+    color:var(--green);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.system-status-left h3{
+    color:#b9ffd0;
+    font-size:1rem;
+    margin-bottom:5px;
+}
+
+.system-status-left p{
+    color:#d1d5db;
+    font-size:.88rem;
+}
+
+/* =======================================================
+   Animated Wave
+======================================================= */
+
+.system-wave{
+    display:flex;
+    align-items:flex-end;
+    gap:5px;
+    height:34px;
+}
+
+.system-wave span{
+    width:4px;
+    background:var(--green);
+    border-radius:20px;
+    animation:wave 1.3s infinite ease-in-out;
+}
+
+.system-wave span:nth-child(1){
+    height:10px;
+}
+
+.system-wave span:nth-child(2){
+    height:22px;
+    animation-delay:.2s;
+}
+
+.system-wave span:nth-child(3){
+    height:14px;
+    animation-delay:.35s;
+}
+
+.system-wave span:nth-child(4){
+    height:28px;
+    animation-delay:.5s;
+}
+
+.system-wave span:nth-child(5){
+    height:18px;
+    animation-delay:.65s;
+}
+
+.system-wave span:nth-child(6){
+    height:12px;
+    animation-delay:.8s;
+}
+
+@keyframes wave{
+
+    0%,100%{
+        transform:scaleY(.6);
+    }
+
+    50%{
+        transform:scaleY(1.3);
+    }
+
+}
+
+/* =======================================================
+   Statistics Cards
+======================================================= */
+
+.alerts-stats{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+
+    margin-bottom:28px;
+
+}
+
+.alert-stat-card{
+
+    background:var(--alert-card);
+
+    border-radius:18px;
+
+    border:1px solid var(--alert-border);
+
+    padding:24px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    transition:.3s;
+
+}
+
+.alert-stat-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 12px 24px rgba(0,0,0,.25);
+
+}
+
+/* =======================================================
+   Icons
+======================================================= */
+
+.alert-stat-icon{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-shrink:0;
+
+}
+
+.alert-stat-icon.total{
+
+    background:var(--red-bg);
+
+    color:var(--red);
+
+}
+
+.alert-stat-icon.high{
+
+    background:var(--orange-bg);
+
+    color:var(--orange);
+
+}
+
+.alert-stat-icon.medium{
+
+    background:var(--yellow-bg);
+
+    color:var(--yellow);
+
+}
+
+.alert-stat-icon.low{
+
+    background:var(--green-bg);
+
+    color:var(--green);
+
+}
+
+/* =======================================================
+   Card Content
+======================================================= */
+
+.alert-stat-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.alert-stat-content p{
+
+    color:var(--muted);
+
+    font-size:.92rem;
+
+    margin-bottom:8px;
+
+}
+
+.alert-stat-content h2{
+
+    font-size:2rem;
+
+    color:#fff;
+
+    margin-bottom:6px;
+
+}
+
+.increase{
+
+    color:var(--green);
+
+    font-size:.85rem;
+
+}
+
+.high-text{
+
+    color:var(--orange);
+
+    font-size:.85rem;
+
+}
+
+.medium-text{
+
+    color:var(--yellow);
+
+    font-size:.85rem;
+
+}
+
+.low-text{
+
+    color:var(--green);
+
+    font-size:.85rem;
+
+}
+
+/* =======================================================
+   ALERT PAGE - PART 2
+   Search Toolbar + Filters + Alert List Header
+=======================================================*/
+
+/* =======================================================
+   Toolbar
+=======================================================*/
+
+.alerts-toolbar{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:24px;
+    flex-wrap:wrap;
+}
+
+/* =======================================================
+   Search Box
+=======================================================*/
+
+.alerts-search{
+    flex:1;
+    min-width:260px;
+    height:54px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:0 18px;
+    background:#141c2c;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:14px;
+    transition:.3s;
+}
+
+.alerts-search:hover{
+    border-color:rgba(34,197,94,.25);
+}
+
+.alerts-search:focus-within{
+    border-color:#22c55e;
+    box-shadow:0 0 0 3px rgba(34,197,94,.12);
+}
+
+.alerts-search svg{
+    color:#9ca3af;
+    flex-shrink:0;
+}
+
+.alerts-search input{
+    flex:1;
+    background:none;
+    border:none;
+    outline:none;
+    color:#fff;
+    font-size:.95rem;
+}
+
+.alerts-search input::placeholder{
+    color:#9ca3af;
+}
+
+/* =======================================================
+   Filter Buttons
+=======================================================*/
+
+.filter-btn{
+
+    height:54px;
+    min-width:150px;
+
+    padding:0 18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+
+    background:#141c2c;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:14px;
+
+    color:#fff;
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.filter-btn:hover{
+
+    border-color:#22c55e;
+    background:#182336;
+
+}
+
+.filter-btn span{
+
+    font-size:.92rem;
+    white-space:nowrap;
+
+}
+
+.filter-btn svg{
+
+    color:#9ca3af;
+
+}
+
+/* =======================================================
+   Filters Button
+=======================================================*/
+
+.filter-icon-btn{
+
+    height:54px;
+
+    padding:0 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    background:#141c2c;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:14px;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.filter-icon-btn:hover{
+
+    background:#182336;
+
+    border-color:#22c55e;
+
+}
+
+.filter-icon-btn svg{
+
+    color:#9ca3af;
+
+}
+
+/* =======================================================
+   Alerts List Container
+=======================================================*/
+
+.alerts-list{
+
+    background:#141c2c;
+
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    overflow:hidden;
+
+}
+
+/* =======================================================
+   Table Header
+=======================================================*/
+
+.alert-list-header{
+
+    display:grid;
+
+    grid-template-columns:
+    120px
+    1.7fr
+    170px
+    150px
+    220px;
+
+    align-items:center;
+
+    padding:18px 24px;
+
+    background:#192336;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+    color:#9ca3af;
+
+    font-size:.88rem;
+
+    font-weight:600;
+
+    letter-spacing:.5px;
+
+}
+
+.header-camera,
+.header-alert,
+.header-time,
+.header-status,
+.header-actions{
+
+    display:flex;
+    align-items:center;
+
+}
+
+/* =======================================================
+   Divider
+=======================================================*/
+
+.alert-list-header div{
+
+    position:relative;
+
+}
+
+.alert-list-header div:not(:last-child)::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:-12px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:1px;
+
+    height:22px;
+
+    background:rgba(255,255,255,.05);
+
+}
+
+/* =======================================================
+   ALERT PAGE - PART 3
+   Alert Rows + Status + Buttons
+======================================================= */
+
+/* =======================================================
+   Alert Row
+======================================================= */
+
+.alert-row{
+    display:grid;
+    grid-template-columns:
+        120px
+        1.7fr
+        170px
+        150px
+        220px;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:22px 24px;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+    transition:.3s;
+}
+
+.alert-row:last-child{
+    border-bottom:none;
+}
+
+.alert-row:hover{
+    background:#182336;
+}
+
+/* =======================================================
+   Camera Image
+======================================================= */
+
+.alert-camera{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.alert-camera img{
+    width:84px;
+    height:84px;
+    object-fit:cover;
+    border-radius:12px;
+    border:2px solid rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.alert-row:hover .alert-camera img{
+    transform:scale(1.04);
+}
+
+/* =======================================================
+   Alert Information
+======================================================= */
+
+.alert-info{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.alert-type{
+    width:56px;
+    height:56px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:1.4rem;
+
+    flex-shrink:0;
+}
+
+/* =======================================================
+   Alert Type Colors
+======================================================= */
+
+.alert-type.intrusion{
+    background:rgba(239,68,68,.12);
+    color:#ef4444;
+}
+
+.alert-type.vehicle{
+    background:rgba(249,115,22,.12);
+    color:#f97316;
+}
+
+.alert-type.loitering{
+    background:rgba(234,179,8,.12);
+    color:#eab308;
+}
+
+.alert-type.access{
+    background:rgba(34,197,94,.12);
+    color:#22c55e;
+}
+
+/* =======================================================
+   Details
+======================================================= */
+
+.alert-details h3{
+    color:#fff;
+    font-size:1.08rem;
+    margin-bottom:6px;
+    font-weight:600;
+}
+
+.alert-details p{
+    color:#9ca3af;
+    font-size:.9rem;
+    margin-bottom:10px;
+}
+
+.alert-meta{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    color:#9ca3af;
+    font-size:.82rem;
+}
+
+/* =======================================================
+   Priority Badge
+======================================================= */
+
+.priority-badge{
+
+    padding:5px 12px;
+
+    border-radius:999px;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+}
+
+.priority-badge.high{
+    background:rgba(239,68,68,.12);
+    color:#ef4444;
+}
+
+.priority-badge.medium{
+    background:rgba(234,179,8,.12);
+    color:#eab308;
+}
+
+.priority-badge.low{
+    background:rgba(34,197,94,.12);
+    color:#22c55e;
+}
+
+/* =======================================================
+   Time
+======================================================= */
+
+.alert-time{
+    text-align:center;
+}
+
+.alert-time h4{
+    color:#fff;
+    font-size:1rem;
+    margin-bottom:5px;
+}
+
+.alert-time span{
+    color:#9ca3af;
+    font-size:.85rem;
+}
+
+/* =======================================================
+   Status
+======================================================= */
+
+.alert-status{
+    display:flex;
+    justify-content:center;
+}
+
+.status-badge{
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    font-size:.82rem;
+
+    font-weight:600;
+
+}
+
+.status-badge.active{
+    background:rgba(239,68,68,.12);
+    color:#ef4444;
+}
+
+.status-badge.resolved{
+    background:rgba(34,197,94,.12);
+    color:#22c55e;
+}
+
+/* =======================================================
+   Action Buttons
+======================================================= */
+
+.alert-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:12px;
+}
+
+.view-btn,
+.resolve-btn{
+
+    height:42px;
+
+    min-width:95px;
+
+    padding:0 18px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:#1a2233;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-size:.9rem;
+
+    font-weight:500;
+}
+
+.view-btn:hover{
+    border-color:#22c55e;
+    color:#22c55e;
+}
+
+.resolve-btn{
+    border-color:rgba(239,68,68,.25);
+    color:#ef4444;
+}
+
+.resolve-btn:hover{
+    background:#ef4444;
+    color:#fff;
+}
+
+/* =======================================================
+   ALERT PAGE - PART 4
+   Footer + Pagination + Responsive
+======================================================= */
+
+/* =======================================================
+   Footer
+======================================================= */
+
+.alerts-footer{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-top:24px;
+
+    padding:18px 4px;
+
+}
+
+.alerts-footer p{
+
+    color:#9ca3af;
+
+    font-size:.9rem;
+
+}
+
+/* =======================================================
+   Pagination
+======================================================= */
+
+.pagination{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+}
+
+.page-btn{
+
+    width:42px;
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#141c2c;
+
+    color:#d1d5db;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-size:.92rem;
+
+    font-weight:600;
+
+}
+
+.page-btn:hover{
+
+    background:#22c55e;
+
+    color:#fff;
+
+}
+
+.page-btn.active{
+
+    background:#22c55e;
+
+    color:#fff;
+
+}
+
+/* =======================================================
+   Responsive
+======================================================= */
+
+@media (max-width:1200px){
+
+    .alerts-stats{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .alert-list-header,
+    .alert-row{
+
+        grid-template-columns:
+        90px
+        1.5fr
+        140px
+        120px
+        180px;
+
+    }
+
+}
+
+/* =======================================================
+   Tablet
+======================================================= */
+
+@media (max-width:992px){
+
+    .alerts-header{
+
+        flex-direction:column;
+        align-items:flex-start;
+
+    }
+
+    .system-status-card{
+
+        width:100%;
+
+    }
+
+    .alerts-toolbar{
+
+        gap:12px;
+
+    }
+
+    .alerts-search{
+
+        width:100%;
+
+    }
+
+    .filter-btn{
+
+        flex:1;
+
+        min-width:170px;
+
+    }
+
+}
+
+/* =======================================================
+   Mobile Table Layout
+======================================================= */
+
+@media (max-width:768px){
+
+    .alerts-stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .alert-list-header{
+
+        display:none;
+
+    }
+
+    .alert-row{
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:18px;
+
+        padding:20px;
+
+    }
+
+    .alert-camera{
+
+        width:100%;
+
+        justify-content:flex-start;
+
+    }
+
+    .alert-camera img{
+
+        width:100%;
+
+        max-width:320px;
+
+        height:180px;
+
+        object-fit:cover;
+
+    }
+
+    .alert-info{
+
+        width:100%;
+
+    }
+
+    .alert-time{
+
+        width:100%;
+
+        text-align:left;
+
+    }
+
+    .alert-status{
+
+        justify-content:flex-start;
+
+    }
+
+    .alert-actions{
+
+        width:100%;
+
+        justify-content:flex-start;
+
+        flex-wrap:wrap;
+
+    }
+
+    .alerts-footer{
+
+        flex-direction:column;
+
+        gap:18px;
+
+        align-items:flex-start;
+
+    }
+
+}
+
+/* =======================================================
+   Small Mobile
+======================================================= */
+
+@media (max-width:480px){
+
+    .alerts-heading{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .alerts-heading h1{
+
+        font-size:1.8rem;
+
+    }
+
+    .alerts-icon{
+
+        width:70px;
+
+        height:70px;
+
+    }
+
+    .system-status-card{
+
+        padding:16px;
+
+    }
+
+    .system-status-left{
+
+        gap:12px;
+
+    }
+
+    .status-icon{
+
+        width:48px;
+
+        height:48px;
+
+    }
+
+    .alerts-search{
+
+        min-width:100%;
+
+    }
+
+    .filter-btn{
+
+        width:100%;
+
+    }
+
+    .filter-icon-btn{
+
+        width:100%;
+
+    }
+
+    .view-btn,
+    .resolve-btn{
+
+        flex:1;
+
+        min-width:120px;
+
+    }
+
+}
+
+/* =======================================================
+   Scrollbar
+======================================================= */
+
+.alerts-list::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.alerts-list::-webkit-scrollbar-track{
+
+    background:#111827;
+
+}
+
+.alerts-list::-webkit-scrollbar-thumb{
+
+    background:#22c55e;
+
+    border-radius:10px;
+
+}
+
+.alerts-list::-webkit-scrollbar-thumb:hover{
+
+    background:#16a34a;
+
+}

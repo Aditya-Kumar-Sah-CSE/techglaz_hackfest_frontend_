@@ -1,0 +1,1112 @@
+/* ==========================================================
+   GuardianAI - Camera Management
+========================================================== */
+
+:root {
+  --bg: #050b0a;
+  --card: #0d1614;
+  --card-light: #13201d;
+
+  --border: rgba(255, 215, 0, 0.12);
+
+  --primary: #19d46b;
+  --primary-dark: #12a956;
+
+  --gold: #f5c84c;
+  --yellow: #ffd54a;
+
+  --red: #ff5757;
+
+  --text: #ffffff;
+  --text-light: #b5c4bd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.camera-management {
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 32px;
+
+  background: var(--bg);
+
+  color: var(--text);
+}
+
+/* ==========================================
+            Header
+========================================== */
+
+.camera-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+.camera-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.camera-icon {
+  width: 70px;
+  height: 70px;
+
+  border-radius: 18px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(25, 212, 107, 0.15),
+    rgba(245, 200, 76, 0.12)
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--primary);
+
+  border: 1px solid rgba(25, 212, 107, 0.25);
+}
+
+.camera-title h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.camera-title p {
+  margin-top: 6px;
+
+  color: var(--text-light);
+
+  font-size: .95rem;
+}
+
+.camera-actions {
+  display: flex;
+  gap: 15px;
+}
+
+/* ==========================================
+             Buttons
+========================================== */
+
+.add-camera-btn,
+.export-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 20px;
+
+  border-radius: 12px;
+
+  border: none;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+.add-camera-btn {
+  background: linear-gradient(
+      135deg,
+      var(--primary),
+      var(--primary-dark)
+  );
+
+  color: white;
+
+  font-weight: 600;
+}
+
+.add-camera-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 10px 22px rgba(25,212,107,.35);
+}
+
+.export-btn {
+  background: rgba(255,255,255,.05);
+
+  color: white;
+
+  border: 1px solid var(--border);
+}
+
+.export-btn:hover {
+  background: rgba(255,255,255,.09);
+}
+
+/* ==========================================
+          Statistics Cards
+========================================== */
+
+.camera-stats {
+  display: grid;
+
+  grid-template-columns: repeat(5,1fr);
+
+  gap: 20px;
+
+  margin-bottom: 28px;
+}
+
+.camera-stat-card {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  padding: 22px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  transition: .3s;
+}
+
+.camera-stat-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(25,212,107,.35);
+
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+}
+
+.stat-icon {
+  width: 62px;
+  height: 62px;
+
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+/* Icon Colors */
+
+.stat-icon.green {
+  color: #22c55e;
+  background: rgba(34,197,94,.15);
+}
+
+.stat-icon.lime {
+  color: #6dff7f;
+  background: rgba(25,212,107,.15);
+}
+
+.stat-icon.red {
+  color: #ff5f5f;
+  background: rgba(255,95,95,.15);
+}
+
+.stat-icon.gold {
+  color: var(--gold);
+  background: rgba(245,200,76,.12);
+}
+
+.stat-icon.yellow {
+  color: #ffd54a;
+  background: rgba(255,213,74,.14);
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-info span {
+  color: var(--text-light);
+
+  font-size: .86rem;
+
+  margin-bottom: 8px;
+}
+
+.stat-info h2 {
+  font-size: 2rem;
+
+  margin-bottom: 6px;
+}
+
+.stat-info small {
+  color: var(--primary);
+
+  font-size: .82rem;
+}
+
+/* ==========================================================
+   Search Toolbar
+========================================================== */
+
+.camera-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  margin-bottom: 25px;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  flex-wrap: wrap;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 320px;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 12px;
+
+  padding: 12px 16px;
+}
+
+.search-box svg {
+  color: var(--text-light);
+}
+
+.search-box input {
+  flex: 1;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: white;
+
+  font-size: .95rem;
+}
+
+.search-box input::placeholder {
+  color: #7e8a86;
+}
+
+.toolbar-left select {
+  min-width: 150px;
+
+  padding: 11px 14px;
+
+  background: var(--card);
+
+  color: white;
+
+  border-radius: 12px;
+
+  border: 1px solid var(--border);
+
+  outline: none;
+
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+.toolbar-left select:hover {
+  border-color: rgba(25,212,107,.35);
+}
+
+.toolbar-right {
+  display: flex;
+  gap: 12px;
+}
+
+.toolbar-right button {
+  width: 46px;
+  height: 46px;
+
+  border-radius: 12px;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+.toolbar-right button:hover {
+  background: rgba(25,212,107,.12);
+
+  border-color: rgba(25,212,107,.35);
+}
+
+.active-view {
+  background: rgba(25,212,107,.18) !important;
+
+  color: var(--primary) !important;
+
+  border-color: rgba(25,212,107,.45) !important;
+}
+
+/* ==========================================================
+   Main Layout
+========================================================== */
+
+.camera-content {
+  display: grid;
+
+  grid-template-columns: 2fr 370px;
+
+  gap: 24px;
+
+  align-items: start;
+}
+
+/* ==========================================================
+   Camera Table Card
+========================================================== */
+
+.camera-table-card {
+  background: var(--card);
+
+  border-radius: 18px;
+
+  border: 1px solid var(--border);
+
+  overflow: hidden;
+}
+
+/* ==========================================================
+   Table
+========================================================== */
+
+.camera-table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+.camera-table thead {
+  background: rgba(255,255,255,.03);
+}
+
+.camera-table th {
+  padding: 18px;
+
+  text-align: left;
+
+  font-size: .88rem;
+
+  font-weight: 600;
+
+  color: var(--gold);
+
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.camera-table td {
+  padding: 18px;
+
+  border-bottom: 1px solid rgba(255,255,255,.05);
+
+  font-size: .92rem;
+
+  color: var(--text-light);
+
+  transition: .25s;
+}
+
+.camera-table tbody tr {
+  transition: .25s;
+
+  cursor: pointer;
+}
+
+.camera-table tbody tr:hover {
+  background: rgba(25,212,107,.06);
+}
+
+.selected-camera {
+  background: rgba(25,212,107,.09);
+}
+
+/* ==========================================================
+   Camera Cell
+========================================================== */
+
+.camera-cell {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
+.camera-cell img {
+  width: 58px;
+  height: 58px;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+
+  border: 2px solid rgba(255,255,255,.08);
+}
+
+.camera-cell h4 {
+  color: white;
+
+  margin-bottom: 5px;
+
+  font-size: .96rem;
+}
+
+.camera-cell span {
+  color: var(--text-light);
+
+  font-size: .82rem;
+}
+
+/* ==========================================================
+   Status Dot
+========================================================== */
+
+.status-dot {
+  width: 11px;
+  height: 11px;
+
+  border-radius: 50%;
+
+  display: inline-block;
+}
+
+.status-dot.online {
+  background: #22c55e;
+
+  box-shadow: 0 0 12px #22c55e;
+}
+
+.status-dot.offline {
+  background: #ff5757;
+
+  box-shadow: 0 0 12px #ff5757;
+}
+
+/* ==========================================================
+   Status Badge
+========================================================== */
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 14px;
+
+  border-radius: 30px;
+
+  font-size: .78rem;
+
+  font-weight: 600;
+}
+
+.online-status {
+  background: rgba(34,197,94,.15);
+
+  color: #2ddc6b;
+}
+
+.offline-status {
+  background: rgba(255,87,87,.15);
+
+  color: #ff6666;
+}
+
+/* ==========================================================
+   Last Active
+========================================================== */
+
+.active-time {
+  color: var(--primary) !important;
+
+  font-weight: 600;
+}
+
+.offline-time {
+  color: #ff6d6d !important;
+
+  font-weight: 600;
+}
+
+/* ==========================================================
+   Table Actions
+========================================================== */
+
+.table-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  width: 36px;
+  height: 36px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+.view-btn {
+  background: rgba(25,212,107,.14);
+
+  color: var(--primary);
+}
+
+.settings-btn {
+  background: rgba(245,200,76,.14);
+
+  color: var(--gold);
+}
+
+.delete-btn {
+  background: rgba(255,87,87,.14);
+
+  color: #ff6666;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* ==========================================================
+   Right Sidebar
+========================================================== */
+
+.camera-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ==========================================================
+   Sidebar Cards
+========================================================== */
+
+.preview-card,
+.details-card {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  transition: .3s;
+}
+
+.preview-card:hover,
+.details-card:hover {
+  border-color: rgba(25,212,107,.25);
+
+  box-shadow: 0 10px 28px rgba(0,0,0,.35);
+}
+
+/* ==========================================================
+   Card Header
+========================================================== */
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 22px;
+
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.sidebar-header h3,
+.details-card h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+
+  color: white;
+}
+
+.details-card h3 {
+  padding: 20px 22px;
+
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+/* ==========================================================
+   Fullscreen Button
+========================================================== */
+
+.fullscreen-btn {
+  width: 38px;
+  height: 38px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: rgba(255,255,255,.06);
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+.fullscreen-btn:hover {
+  background: rgba(25,212,107,.18);
+
+  color: var(--primary);
+
+  transform: scale(1.08);
+}
+
+/* ==========================================================
+   Preview Image
+========================================================== */
+
+.preview-image {
+  width: 100%;
+  height: 250px;
+
+  background: #000;
+
+  overflow: hidden;
+}
+
+.preview-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: .4s;
+}
+
+.preview-image:hover img {
+  transform: scale(1.05);
+}
+
+/* ==========================================================
+   Preview Footer
+========================================================== */
+
+.preview-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 20px;
+}
+
+.preview-info {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: .92rem;
+
+  color: white;
+}
+
+.live-text {
+  padding: 5px 14px;
+
+  border-radius: 25px;
+
+  background: rgba(25,212,107,.15);
+
+  color: var(--primary);
+
+  font-size: .75rem;
+
+  font-weight: 600;
+
+  letter-spacing: .5px;
+}
+
+/* ==========================================================
+   Camera Details
+========================================================== */
+
+.details-card {
+  padding-bottom: 10px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 16px 22px;
+
+  border-bottom: 1px solid rgba(255,255,255,.05);
+
+  transition: .25s;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row:hover {
+  background: rgba(25,212,107,.05);
+}
+
+/* ==========================================================
+   Detail Label
+========================================================== */
+
+.detail-label {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  color: var(--text-light);
+
+  font-size: .9rem;
+
+  font-weight: 500;
+}
+
+.detail-label svg {
+  color: var(--gold);
+
+  flex-shrink: 0;
+}
+
+.detail-row span {
+  color: white;
+
+  font-size: .9rem;
+
+  font-weight: 600;
+
+  text-align: right;
+}
+
+/* ==========================================================
+   Scrollbar
+========================================================== */
+
+.camera-table-card::-webkit-scrollbar,
+.camera-sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.camera-table-card::-webkit-scrollbar-track,
+.camera-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.camera-table-card::-webkit-scrollbar-thumb,
+.camera-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.12);
+
+  border-radius: 10px;
+}
+
+.camera-table-card::-webkit-scrollbar-thumb:hover,
+.camera-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(25,212,107,.35);
+}
+
+/* ==========================================================
+   Responsive Design
+========================================================== */
+
+/* ---------- Large Laptop ---------- */
+
+@media (max-width: 1500px) {
+
+  .camera-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .camera-content {
+    grid-template-columns: 1fr 340px;
+  }
+
+}
+
+/* ---------- Laptop ---------- */
+
+@media (max-width: 1200px) {
+
+  .camera-management {
+    padding: 24px;
+  }
+
+  .camera-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .camera-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .camera-content {
+    grid-template-columns: 1fr;
+  }
+
+  .camera-sidebar {
+    width: 100%;
+  }
+
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 992px) {
+
+  .camera-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .camera-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-left {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .toolbar-left select {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .toolbar-right {
+    justify-content: flex-end;
+  }
+
+  .camera-table-card {
+    overflow-x: auto;
+  }
+
+  .camera-table {
+    min-width: 950px;
+  }
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px) {
+
+  .camera-management {
+    padding: 18px;
+  }
+
+  .camera-title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .camera-title h1 {
+    font-size: 1.6rem;
+  }
+
+  .camera-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .add-camera-btn,
+  .export-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .camera-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .camera-stat-card {
+    padding: 18px;
+  }
+
+  .toolbar-left {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-left select,
+  .search-box {
+    width: 100%;
+  }
+
+  .toolbar-right {
+    justify-content: center;
+  }
+
+  .preview-image {
+    height: 220px;
+  }
+
+  .preview-footer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .detail-row span {
+    text-align: left;
+  }
+
+}
+
+/* ---------- Small Mobile ---------- */
+
+@media (max-width: 480px) {
+
+  .camera-management {
+    padding: 14px;
+  }
+
+  .camera-icon {
+    width: 58px;
+    height: 58px;
+  }
+
+  .camera-title h1 {
+    font-size: 1.35rem;
+  }
+
+  .camera-title p {
+    font-size: .85rem;
+  }
+
+  .camera-stat-card {
+    gap: 14px;
+  }
+
+  .stat-icon {
+    width: 54px;
+    height: 54px;
+  }
+
+  .stat-info h2 {
+    font-size: 1.6rem;
+  }
+
+  .sidebar-header,
+  .details-card h3 {
+    padding: 16px;
+  }
+
+  .detail-row {
+    padding: 14px 16px;
+  }
+
+  .preview-image {
+    height: 190px;
+  }
+
+}
+
+/* ==========================================================
+   Smooth Animations
+========================================================== */
+
+.camera-stat-card,
+.camera-table tbody tr,
+.preview-card,
+.details-card,
+.action-btn,
+.toolbar-right button,
+.add-camera-btn,
+.export-btn {
+  transition: all .3s ease;
+}
+
+.camera-table tbody tr:hover td {
+  color: #ffffff;
+}
+
+.camera-cell img:hover {
+  transform: scale(1.08);
+}
+
+.preview-card:hover .preview-image img {
+  transform: scale(1.06);
+}
+
+/* ==========================================================
+   Focus States
+========================================================== */
+
+button:focus,
+input:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(25, 212, 107, 0.18);
+}
+
+/* ==========================================================
+   Selection
+========================================================== */
+
+::selection {
+  background: rgba(25, 212, 107, 0.35);
+  color: #fff;
+}

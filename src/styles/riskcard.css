@@ -1,0 +1,1213 @@
+/* ===================================================
+   RiskCard.css - Part 1
+=================================================== */
+
+/* =========================
+   Page
+========================= */
+
+.risk-page {
+  padding: 28px;
+  background: #090909;
+  min-height: 100vh;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+}
+
+/* =========================
+   Header
+========================= */
+
+.risk-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:28px;
+}
+
+.risk-title{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.title-icon{
+  width:54px;
+  height:54px;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#121212;
+  border:1px solid rgba(255,184,0,.25);
+  color:#facc15;
+  font-size:26px;
+  box-shadow:0 0 18px rgba(255,184,0,.15);
+}
+
+.risk-title h1{
+  margin:0;
+  font-size:34px;
+  font-weight:700;
+  color:#facc15;
+}
+
+.risk-title p{
+  margin-top:6px;
+  color:#9ca3af;
+  font-size:14px;
+}
+
+/* =========================
+   System Status
+========================= */
+
+.system-status{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+
+  background:#101010;
+  border:1px solid rgba(255,255,255,.06);
+
+  padding:18px 22px;
+
+  border-radius:16px;
+
+  min-width:280px;
+
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+
+.status-left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.status-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#22c55e;
+  box-shadow:0 0 12px #22c55e;
+}
+
+.status-left h4{
+  margin:0;
+  color:#9fe870;
+  font-size:15px;
+}
+
+.status-left p{
+  margin-top:4px;
+  color:#9ca3af;
+  font-size:13px;
+}
+
+.status-shield{
+  color:#facc15;
+  font-size:30px;
+}
+
+/* =========================
+   Risk Overview
+========================= */
+
+.risk-overview{
+  border:1px solid rgba(250,204,21,.45);
+  background:#111111;
+
+  border-radius:18px;
+
+  padding:22px;
+
+  margin-bottom:28px;
+
+  box-shadow:0 8px 30px rgba(0,0,0,.35);
+}
+
+.risk-overview h3{
+  margin-bottom:22px;
+  font-size:18px;
+  font-weight:600;
+}
+
+/* =========================
+   Grid
+========================= */
+
+.overview-grid{
+  display:grid;
+
+  grid-template-columns:
+      2.5fr
+      repeat(4,1fr);
+
+  gap:18px;
+
+  align-items:center;
+}
+
+/* =========================
+   Score Card
+========================= */
+
+.risk-score-card{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+
+.risk-circle{
+
+  width:120px;
+  height:120px;
+
+  border-radius:50%;
+
+  background:
+  conic-gradient(
+      #ef4444 0deg 110deg,
+      #f97316 110deg 170deg,
+      #eab308 170deg 285deg,
+      #22c55e 285deg 360deg
+  );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  position:relative;
+}
+
+.risk-circle::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:88px;
+  height:88px;
+
+  border-radius:50%;
+
+  background:#111;
+
+}
+
+.circle-inner{
+
+  position:relative;
+  z-index:2;
+
+  text-align:center;
+}
+
+.circle-inner h2{
+  margin:0;
+  font-size:40px;
+  font-weight:700;
+}
+
+.circle-inner span{
+  display:block;
+  margin-top:2px;
+  color:#d1d5db;
+  font-size:13px;
+}
+
+.circle-inner small{
+  color:#9ca3af;
+  font-size:12px;
+}
+
+/* =========================
+   Divider
+========================= */
+
+.score-details{
+
+  border-left:1px solid rgba(255,255,255,.18);
+
+  padding-left:26px;
+}
+
+.score-details h4{
+  margin:0;
+  color:#cbd5e1;
+  font-size:14px;
+}
+
+.score-details h2{
+  margin:10px 0;
+  color:#ef4444;
+  font-size:34px;
+}
+
+.score-details p{
+  color:#9ca3af;
+  font-size:13px;
+}
+
+.score-details button{
+
+  margin-top:14px;
+
+  border:none;
+
+  background:#2b1111;
+
+  color:#ff6b6b;
+
+  padding:8px 16px;
+
+  border-radius:8px;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.score-details button:hover{
+  background:#441818;
+}
+
+/* =========================
+   Risk Stat Cards
+========================= */
+
+.risk-stat{
+
+  background:#121212;
+
+  border:1px solid rgba(255,255,255,.06);
+
+  border-radius:16px;
+
+  padding:20px;
+
+  min-height:135px;
+
+  transition:.35s;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:10px;
+}
+
+.risk-stat:hover{
+
+  transform:translateY(-4px);
+
+  border-color:#facc15;
+
+  box-shadow:0 12px 28px rgba(0,0,0,.45);
+}
+
+.risk-stat svg{
+  font-size:26px;
+}
+
+.risk-stat span{
+  color:#d1d5db;
+  font-size:14px;
+}
+
+.risk-stat h2{
+  margin:0;
+  font-size:34px;
+}
+
+.risk-stat p{
+  margin:0;
+  font-size:13px;
+  color:#9ca3af;
+}
+
+/* =========================
+   Card Colours
+========================= */
+
+.risk-stat.critical svg,
+.risk-stat.critical h2{
+  color:#ef4444;
+}
+
+.risk-stat.high svg,
+.risk-stat.high h2{
+  color:#f97316;
+}
+
+.risk-stat.medium svg,
+.risk-stat.medium h2{
+  color:#eab308;
+}
+
+.risk-stat.low svg,
+.risk-stat.low h2{
+  color:#22c55e;
+}
+
+/* ===================================================
+   RiskCard.css - Part 2
+   Middle Section
+=================================================== */
+
+
+/* =========================
+   Middle Grid
+========================= */
+
+.risk-middle-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+  margin-bottom:22px;
+}
+
+
+/* =========================
+   Common Card
+========================= */
+
+.risk-card{
+
+  background:#101010;
+
+  border:1px solid rgba(255,255,255,.06);
+
+  border-radius:18px;
+
+  padding:20px;
+
+  box-shadow:0 8px 22px rgba(0,0,0,.35);
+
+  transition:.35s;
+}
+
+.risk-card:hover{
+
+  border-color:rgba(250,204,21,.35);
+
+  transform:translateY(-4px);
+}
+
+.risk-card h3{
+  margin:0;
+  font-size:18px;
+  font-weight:600;
+}
+
+
+/* =========================
+   Card Header
+========================= */
+
+.card-header{
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:18px;
+}
+
+.card-header select{
+
+  background:#171717;
+
+  color:#e5e7eb;
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:10px;
+
+  padding:8px 14px;
+
+  outline:none;
+
+  cursor:pointer;
+}
+
+
+/* =========================
+   Fake Chart
+========================= */
+
+.fake-chart{
+
+  position:relative;
+
+  width:100%;
+
+  height:260px;
+
+  border-radius:14px;
+
+  overflow:hidden;
+
+  background:
+  linear-gradient(
+      to bottom,
+      rgba(255,255,255,.02),
+      rgba(255,255,255,0)
+  );
+}
+
+
+/* =========================
+   Grid Lines
+========================= */
+
+.chart-grid{
+
+  position:absolute;
+
+  inset:0;
+
+  background-image:
+
+  repeating-linear-gradient(
+      to right,
+      rgba(255,255,255,.05) 0,
+      rgba(255,255,255,.05) 1px,
+      transparent 1px,
+      transparent 55px
+  ),
+
+  repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.05) 0,
+      rgba(255,255,255,.05) 1px,
+      transparent 1px,
+      transparent 45px
+  );
+}
+
+
+/* =========================
+   SVG Chart
+========================= */
+
+.line-chart{
+
+  width:100%;
+  height:100%;
+
+  position:relative;
+  z-index:2;
+}
+
+
+/* Area Fill */
+
+.line-chart polyline{
+
+  filter:drop-shadow(
+      0 0 10px
+      rgba(249,115,22,.35)
+  );
+
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+
+/* Points */
+
+.line-chart circle{
+
+  fill:#f59e0b;
+
+  stroke:#fff;
+
+  stroke-width:2;
+
+  transition:.3s;
+}
+
+.line-chart circle:hover{
+
+  r:7;
+
+  fill:#facc15;
+}
+
+
+/* =========================
+   Labels
+========================= */
+
+.chart-labels{
+
+  position:absolute;
+
+  bottom:8px;
+
+  left:0;
+  right:0;
+
+  display:flex;
+  justify-content:space-around;
+
+  color:#9ca3af;
+
+  font-size:12px;
+
+  z-index:5;
+}
+
+
+/* =========================
+   Category Layout
+========================= */
+
+.category-content{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-top:24px;
+
+  gap:24px;
+}
+
+
+/* =========================
+   Donut Chart
+========================= */
+
+.donut-chart{
+
+  width:200px;
+  height:200px;
+
+  border-radius:50%;
+
+  background:
+
+  conic-gradient(
+
+      #ef4444 0% 31%,
+
+      #f97316 31% 57%,
+
+      #eab308 57% 78%,
+
+      #22c55e 78% 90%,
+
+      #3b82f6 90% 100%
+  );
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  position:relative;
+
+  flex-shrink:0;
+}
+
+
+/* Inner Circle */
+
+.donut-chart::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:120px;
+  height:120px;
+
+  background:#101010;
+
+  border-radius:50%;
+}
+
+
+/* Center */
+
+.donut-center{
+
+  position:relative;
+
+  z-index:2;
+
+  text-align:center;
+}
+
+.donut-center h2{
+
+  margin:0;
+
+  font-size:38px;
+
+  color:#ffffff;
+}
+
+.donut-center span{
+
+  display:block;
+
+  margin-top:4px;
+
+  color:#9ca3af;
+
+  font-size:13px;
+}
+
+
+/* =========================
+   Category List
+========================= */
+
+.category-list{
+
+  flex:1;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:16px;
+}
+
+.category-item{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:12px;
+}
+
+.category-item p{
+
+  flex:1;
+
+  margin:0;
+
+  color:#d1d5db;
+
+  font-size:14px;
+}
+
+.category-item strong{
+
+  color:#ffffff;
+
+  font-size:14px;
+
+  font-weight:600;
+}
+
+
+/* =========================
+   Legend Colours
+========================= */
+
+.category-item span{
+
+  width:12px;
+  height:12px;
+
+  border-radius:50%;
+
+  display:inline-block;
+
+  flex-shrink:0;
+}
+
+.dot-red { background:#ef4444; }
+.dot-orange { background:#f97316; }
+.dot-yellow { background:#eab308; }
+.dot-green { background:#22c55e; }
+.dot-blue { background:#3b82f6; }
+
+/* ===================================================
+   RiskCard.css - Part 3
+   Bottom Section + Responsive
+=================================================== */
+
+
+/* =========================
+   Bottom Grid
+========================= */
+
+.risk-bottom-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+
+
+/* =========================
+   Top Risk Table
+========================= */
+
+.risk-table{
+    margin-top:18px;
+}
+
+.risk-row{
+
+    display:grid;
+
+    grid-template-columns:
+    35px
+    1.6fr
+    90px
+    70px
+    30px;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:16px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.risk-row:last-child{
+    border-bottom:none;
+}
+
+.risk-row h4{
+    margin:0;
+    font-size:15px;
+    font-weight:600;
+}
+
+.risk-row p{
+    margin-top:4px;
+    color:#9ca3af;
+    font-size:12px;
+}
+
+.risk-row strong{
+    color:#ffffff;
+    font-size:15px;
+}
+
+
+/* =========================
+   Table Icons
+========================= */
+
+.risk-row svg{
+
+    font-size:22px;
+}
+
+.danger{
+    color:#ef4444;
+}
+
+.orange{
+    color:#f97316;
+}
+
+.yellow{
+    color:#eab308;
+}
+
+.green{
+    color:#22c55e;
+}
+
+
+/* =========================
+   Badges
+========================= */
+
+.badge{
+
+    padding:6px 10px;
+
+    border-radius:8px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    text-align:center;
+}
+
+.badge.critical{
+
+    background:rgba(239,68,68,.18);
+
+    color:#ef4444;
+}
+
+.badge.high{
+
+    background:rgba(249,115,22,.18);
+
+    color:#f97316;
+}
+
+.badge.medium{
+
+    background:rgba(234,179,8,.18);
+
+    color:#eab308;
+}
+
+.badge.low{
+
+    background:rgba(34,197,94,.18);
+
+    color:#22c55e;
+}
+
+
+/* =========================
+   Recommendations
+========================= */
+
+.recommendations{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    margin-top:18px;
+}
+
+.recommendation{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    background:#151515;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:14px;
+
+    padding:16px;
+
+    transition:.3s;
+}
+
+.recommendation:hover{
+
+    border-color:#facc15;
+
+    transform:translateX(4px);
+
+    background:#191919;
+}
+
+.recommendation svg{
+
+    font-size:24px;
+
+    flex-shrink:0;
+}
+
+.recommendation div{
+
+    flex:1;
+}
+
+.recommendation h4{
+
+    margin:0;
+
+    font-size:15px;
+}
+
+.recommendation p{
+
+    margin-top:5px;
+
+    color:#9ca3af;
+
+    font-size:13px;
+}
+
+
+/* =========================
+   Priority Labels
+========================= */
+
+.priority{
+
+    padding:8px 14px;
+
+    border-radius:8px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    white-space:nowrap;
+}
+
+.priority.high{
+
+    background:rgba(249,115,22,.18);
+
+    color:#f97316;
+}
+
+.priority.medium{
+
+    background:rgba(234,179,8,.18);
+
+    color:#eab308;
+}
+
+.priority.low{
+
+    background:rgba(34,197,94,.18);
+
+    color:#22c55e;
+}
+
+
+/* =========================
+   Scrollbar
+========================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#3f3f46;
+
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#facc15;
+}
+
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width:1200px){
+
+.overview-grid{
+
+grid-template-columns:
+1fr
+1fr;
+}
+
+.risk-score-card{
+
+grid-column:1/-1;
+}
+
+.risk-middle-grid{
+
+grid-template-columns:1fr;
+}
+
+.risk-bottom-grid{
+
+grid-template-columns:1fr;
+}
+
+.category-content{
+
+flex-direction:column;
+}
+
+.system-status{
+
+min-width:auto;
+}
+
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width:768px){
+
+.risk-page{
+
+padding:18px;
+}
+
+.risk-header{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:18px;
+}
+
+.system-status{
+
+width:100%;
+}
+
+.risk-title h1{
+
+font-size:28px;
+}
+
+.risk-score-card{
+
+flex-direction:column;
+
+align-items:flex-start;
+}
+
+.score-details{
+
+border-left:none;
+
+border-top:1px solid rgba(255,255,255,.1);
+
+padding-left:0;
+
+padding-top:20px;
+
+width:100%;
+}
+
+.overview-grid{
+
+grid-template-columns:1fr;
+}
+
+.risk-middle-grid{
+
+grid-template-columns:1fr;
+}
+
+.risk-bottom-grid{
+
+grid-template-columns:1fr;
+}
+
+.risk-row{
+
+grid-template-columns:
+30px
+1fr;
+
+row-gap:10px;
+}
+
+.badge,
+.priority{
+
+justify-self:start;
+}
+
+.category-content{
+
+flex-direction:column;
+}
+
+.donut-chart{
+
+width:170px;
+height:170px;
+}
+
+.donut-chart::before{
+
+width:100px;
+height:100px;
+}
+
+}
+
+
+/* =========================
+   Small Mobile
+========================= */
+
+@media (max-width:480px){
+
+.risk-title{
+
+flex-direction:column;
+
+align-items:flex-start;
+}
+
+.title-icon{
+
+width:48px;
+height:48px;
+}
+
+.risk-title h1{
+
+font-size:24px;
+}
+
+.risk-circle{
+
+width:100px;
+height:100px;
+}
+
+.risk-circle::before{
+
+width:74px;
+height:74px;
+}
+
+.circle-inner h2{
+
+font-size:32px;
+}
+
+.recommendation{
+
+flex-direction:column;
+
+align-items:flex-start;
+}
+
+.priority{
+
+margin-top:8px;
+}
+
+.chart-labels{
+
+font-size:10px;
+}
+}

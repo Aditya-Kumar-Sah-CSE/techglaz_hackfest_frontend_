@@ -1,0 +1,545 @@
+/* ==========================
+   GuardianAI Splash Screen
+========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.splash-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #101010 0%, #050505 60%, #000000 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  isolation: isolate;
+}
+
+/* ==========================
+      Floating Particles
+========================== */
+
+.particles::before,
+.particles::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particles::before {
+  background-image:
+      radial-gradient(#00f5b0 1px, transparent 1px),
+      radial-gradient(#ffd54a 1px, transparent 1px);
+  background-size: 140px 140px, 180px 180px;
+  opacity: .18;
+  animation: particleFloat 16s linear infinite;
+}
+
+@keyframes particleFloat {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-120px);
+  }
+}
+
+/* ==========================
+        Emerald Dot
+========================== */
+
+.emerald-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #00ffb3;
+  box-shadow:
+      0 0 12px #00ffb3,
+      0 0 28px #00ffb3,
+      0 0 70px #00ffb3;
+  position: absolute;
+  z-index: 10;
+}
+
+/* Emerald Glow */
+
+.emerald-glow {
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      rgba(0,255,180,.35),
+      transparent 70%);
+  filter: blur(18px);
+  z-index: 5;
+}
+
+/* ==========================
+       Scanner Rings
+========================== */
+
+.scanner {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(0,255,180,.55);
+}
+
+.ring1 {
+  width: 80px;
+  height: 80px;
+  animation: rotateScanner 4s linear infinite;
+}
+
+.ring2 {
+  width: 150px;
+  height: 150px;
+  animation: rotateScannerReverse 7s linear infinite;
+}
+
+.ring3 {
+  width: 220px;
+  height: 220px;
+  animation: rotateScanner 10s linear infinite;
+}
+
+/* Scanner Effects */
+
+.scanner-line {
+  position: absolute;
+  width: 240px;
+  height: 2px;
+  background: linear-gradient(90deg,
+      transparent,
+      #00ffb3,
+      transparent);
+  animation: scannerSweep 2s linear infinite;
+}
+
+.scanner-grid {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0,255,180,.15);
+}
+
+@keyframes scannerSweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateScanner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateScannerReverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* ==========================
+      Shield Outline
+========================== */
+
+.shield-outline {
+  position: absolute;
+  z-index: 5;
+}
+
+.shield-path {
+  fill: transparent;
+  stroke-width: 3;
+  stroke-linejoin: round;
+
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+
+  animation: drawShield 2s forwards;
+}
+
+@keyframes drawShield {
+
+  to {
+    stroke-dashoffset: 0;
+  }
+
+}
+
+/* ==========================
+        Shield Image
+========================== */
+
+.shield-image {
+
+  width: 260px;
+
+  position: absolute;
+
+  z-index: 20;
+
+  filter:
+  drop-shadow(0 0 20px rgba(255,210,70,.45))
+  drop-shadow(0 0 35px rgba(0,255,180,.22));
+
+animation: shieldFloat 4s ease-in-out infinite;
+
+}
+
+.shield-glow {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      rgba(255,215,0,.18),
+      transparent 70%);
+  filter: blur(25px);
+  z-index: 10;
+}
+
+.light-sweep {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  overflow: hidden;
+  background: linear-gradient(
+      120deg,
+      transparent 35%,
+      rgba(255,255,255,.35) 50%,
+      transparent 65%);
+  animation: sweep 3s linear infinite;
+  z-index: 25;
+  pointer-events: none;
+  
+}
+
+@keyframes shieldFloat {
+  0%,100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes sweep {
+  from {
+    transform: translateX(-220px);
+  }
+  to {
+    transform: translateX(220px);
+  }
+}
+
+/* ==========================
+        Gold Pulse
+========================== */
+
+.gold-pulse {
+
+  width: 220px;
+
+  height: 220px;
+
+  border-radius: 50%;
+
+  position: absolute;
+
+  background: radial-gradient(circle,
+
+      rgba(255,210,70,.45),
+
+      transparent 70%);
+
+  z-index: 1;
+
+}
+
+.gold-ring {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,215,0,.35);
+  animation: pulseRing 2s infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(.9);
+    opacity: .6;
+  }
+  100% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+}
+
+/* ==========================
+        Logo
+========================== */
+
+.guardian-logo {
+
+  width: 320px;
+
+  position: absolute;
+
+  bottom: 70px;
+
+  z-index: 30;
+
+  filter:
+    drop-shadow(0 0 15px rgba(255,210,70,.65))
+    drop-shadow(0 0 30px rgba(0,255,180,.20));
+
+}
+
+.tagline {
+  position: absolute;
+  bottom: 40px;
+  color: #FFD54A;
+  font-size: 15px;
+  letter-spacing: 6px;
+  font-weight: 600;
+  z-index: 35;
+}
+
+/* ==========================
+       Loading Ring
+========================== */
+
+.loading-wrapper {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 40;
+}
+
+.loading-ring {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,.15);
+  border-top: 3px solid #00f5b0;
+  border-right: 3px solid #ffd54a;
+  
+}
+
+
+
+.loading-text {
+  color: white;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+font-weight: 600;
+}
+
+/* AI Network */
+
+.network {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  z-index: 15;
+}
+
+.node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #00ffb3;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ffb3;
+}
+
+.node1 { top: 20%; left: 50%; }
+.node2 { top: 50%; right: 15%; }
+.node3 { bottom: 20%; left: 35%; }
+.node4 { top: 65%; left: 15%; }
+
+.line {
+  position: absolute;
+  height: 2px;
+  background: rgba(0,255,180,.4);
+  transform-origin: left center;
+}
+
+.line1 {
+  width: 110px;
+  top: 28%;
+  left: 42%;
+  transform: rotate(35deg);
+}
+
+.line2 {
+  width: 90px;
+  top: 52%;
+  left: 30%;
+  transform: rotate(-25deg);
+}
+
+.line3 {
+  width: 100px;
+  top: 60%;
+  left: 48%;
+  transform: rotate(120deg);
+}
+
+/* Background Glow */
+
+.background-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle,
+      rgba(0,255,180,.08),
+      transparent 70%);
+  pointer-events: none;
+}
+
+/* Gold Particles */
+
+.gold-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.gold-particles::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#FFD700 1px, transparent 1px);
+  background-size: 200px 200px;
+  opacity: .12;
+}
+
+/* HUD Corners */
+
+.corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(0,255,180,.45);
+}
+
+.corner-top-left {
+  top: 20px;
+  left: 20px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.corner-top-right {
+  top: 20px;
+  right: 20px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.corner-bottom-left {
+  bottom: 20px;
+  left: 20px;
+  border-right: none;
+  border-top: none;
+}
+
+.corner-bottom-right {
+  bottom: 20px;
+  right: 20px;
+  border-left: none;
+  border-top: none;
+}
+
+/* ==========================
+      Responsive
+========================== */
+
+@media (max-width:768px){
+
+    .tagline {
+  font-size: 11px;
+  letter-spacing: 3px;
+  bottom: 55px;
+}
+
+.shield-image{
+
+    width:180px;
+
+}
+
+.guardian-logo{
+
+    width:240px;
+
+    bottom:90px;
+
+}
+
+.scanner{
+
+    width:180px;
+
+    height:180px;
+
+}
+
+.ring3{
+
+    width:170px;
+
+    height:170px;
+
+}
+
+.ring2{
+
+    width:120px;
+
+    height:120px;
+
+}
+
+.ring1{
+
+    width:70px;
+
+    height:70px;
+
+}
+
+}

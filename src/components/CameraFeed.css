@@ -1,0 +1,311 @@
+/* ==========================================
+   Camera Feed
+========================================== */
+
+.camera-feed-page{
+    padding:32px;
+    background:#0b0b0b;
+    min-height:100vh;
+    color:#fff;
+}
+
+/* =======================
+Header
+======================= */
+
+.camera-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:28px;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.camera-title{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.camera-icon{
+    width:62px;
+    height:62px;
+    border-radius:50%;
+    background:#154d26;
+    color:#57e389;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.camera-title h1{
+    font-size:36px;
+    color:#d4a017;
+}
+
+.camera-title p{
+    color:#b6b6b6;
+    margin-top:6px;
+}
+
+/* =======================
+System Card
+======================= */
+
+.system-status-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:320px;
+    background:#111;
+    border:1px solid rgba(212,160,23,.15);
+    border-radius:18px;
+    padding:18px 22px;
+}
+
+.status-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.green-dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#39d353;
+}
+
+.system-status-card h4{
+    color:#d4a017;
+}
+
+.system-status-card span{
+    color:#bfbfbf;
+    font-size:14px;
+}
+
+.status-logo{
+    color:#d4a017;
+}
+
+/* =======================
+Camera Card
+======================= */
+
+.camera-card{
+    border:1px solid #d4a017;
+    border-radius:20px;
+    overflow:hidden;
+    background:#111;
+}
+
+/* =======================
+Top Bar
+======================= */
+
+.camera-topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 22px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.camera-info{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.live-badge{
+    background:#155d27;
+    color:#5cff82;
+    padding:8px 16px;
+    border-radius:8px;
+    font-weight:600;
+}
+
+.camera-info h3{
+    font-size:20px;
+}
+
+.camera-options{
+    display:flex;
+    gap:12px;
+}
+
+.icon-btn{
+    width:46px;
+    height:46px;
+    border-radius:12px;
+    border:none;
+    background:#181818;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.icon-btn:hover{
+    background:#d4a017;
+    color:black;
+}
+
+/* =======================
+Camera Image
+======================= */
+
+.camera-preview{
+    position:relative;
+}
+
+.camera-preview img{
+    width:100%;
+    display:block;
+    height:560px;
+    object-fit:cover;
+}
+
+.camera-time{
+    position:absolute;
+    bottom:22px;
+    left:22px;
+    font-size:22px;
+    color:white;
+    font-weight:600;
+}
+
+/* =======================
+Status
+======================= */
+
+.camera-status-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-top:22px;
+}
+
+.status-box{
+    background:#111;
+    border-radius:16px;
+    padding:22px;
+}
+
+.status-title{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#cfcfcf;
+    margin-bottom:12px;
+}
+
+.status-label{
+    color:#a4a4a4;
+}
+
+.status-box h4{
+    color:#39d353;
+    margin-top:10px;
+}
+
+/* =======================
+Buttons
+======================= */
+
+.camera-controls{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-top:26px;
+}
+
+.control-btn{
+    height:65px;
+    border-radius:14px;
+    border:none;
+    cursor:pointer;
+    font-size:17px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    transition:.3s;
+}
+
+.green-btn{
+    background:#155d27;
+    color:white;
+}
+
+.green-btn:hover{
+    background:#1d7a35;
+}
+
+.gold-btn{
+    background:#1a1a1a;
+    border:2px solid #d4a017;
+    color:#d4a017;
+}
+
+.gold-btn:hover{
+    background:#d4a017;
+    color:black;
+}
+
+.gold-outline{
+    background:#111;
+    border:2px solid #d4a017;
+    color:#d4a017;
+}
+
+.gold-outline:hover{
+    background:#d4a017;
+    color:black;
+}
+
+/* =======================
+Responsive
+======================= */
+
+@media(max-width:1100px){
+
+.camera-status-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.camera-controls{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:700px){
+
+.camera-header{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.system-status-card{
+    width:100%;
+}
+
+.camera-status-grid{
+    grid-template-columns:1fr;
+}
+
+.camera-controls{
+    grid-template-columns:1fr;
+}
+
+.camera-preview img{
+    height:320px;
+}
+
+.camera-title h1{
+    font-size:28px;
+}
+
+}
