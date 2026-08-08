@@ -1,4 +1,4 @@
-const defaultApiBaseUrl ="http://localhost:5000/api";
+const defaultApiBaseUrl ="https://undenoted-remi-supersentimentally.ngrok-free.dev/api";
 
 const configuredApiBaseUrl =
   import.meta.env.VITE_API_BASE_URL || defaultApiBaseUrl;
