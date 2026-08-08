@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { getCameras } from "../services/guardianApi";
 import { unwrapList } from "../services/apiClient";
 import { normalizeCamera } from "../services/dataMappers";
+import LiveCamera from "../components/LiveCamera";
 
 import "../styles/LiveMonitoring.css";
 
@@ -99,6 +100,7 @@ const LiveMonitoring = () => {
               id: camera.id,
               title: camera.name,
               image: camera.image,
+              streamUrl: camera.streamUrl,
               live: camera.status === "Online",
             }))
           );
@@ -271,7 +273,7 @@ const LiveMonitoring = () => {
                     {/* Camera Image */}
 
                     <div className="camera-image">
-                      <img src={camera.image} alt={camera.title} />
+                      <LiveCamera cameraId={camera.id} streamUrl={camera.streamUrl} fallbackImage={camera.image} alt={`${camera.title} live feed`} />
 
                       {/* LIVE Badge */}
 
@@ -443,3 +445,5 @@ const LiveMonitoring = () => {
 };
 
 export default LiveMonitoring;
+
+

@@ -29,6 +29,7 @@ export function normalizeCamera(camera, index = 0) {
     resolution: camera.resolution || "1080p",
     lastActive: camera.lastActive || camera.updatedAt || camera.createdAt || "Just now",
     image: pickImage(camera.imageUrl || camera.snapshotUrl || camera.frameUrl, index),
+    streamUrl: camera.streamUrl || camera.liveUrl || camera.mjpegUrl || "",
     latitude: camera.latitude ?? camera.location?.latitude,
     longitude: camera.longitude ?? camera.location?.longitude,
     ipAddress: camera.ipAddress || camera.ip || camera.ip_address || camera.address || "N/A",
