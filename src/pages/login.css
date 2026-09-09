@@ -391,10 +391,12 @@ img {
 }
 
 .guardian-logo {
-    width: clamp(50px, 5vw, 70px);
-    margin-bottom: 6px;
+    width: clamp(120px, 10vw, 170px);
+    height: auto;
+    margin-bottom: 8px;
     filter: drop-shadow(0 0 18px rgba(212, 175, 55, .30));
 }
+
 
 .brand-title {
     font-size: clamp(1.8rem, 2.5vw, 2.4rem);
@@ -1198,8 +1200,8 @@ img {
     }
 
     .guardian-logo {
-        width: clamp(50px, 4vw, 60px);
-    }
+    width: 140px;
+}
 
     .feature-list {
         max-width: 360px;
@@ -1306,8 +1308,8 @@ img {
     }
 
     .guardian-logo {
-        width: 60px;
-    }
+    width: 120px;
+}
 
     .brand-tagline {
         font-size: 0.98rem;
@@ -1462,8 +1464,8 @@ img {
     }
 
     .guardian-logo {
-        width: 52px;
-    }
+    width: 105px;
+}
 
     .brand-tagline {
         font-size: .88rem;
@@ -1541,8 +1543,8 @@ img {
     }
 
     .guardian-logo {
-        width: 45px;
-    }
+    width: 90px;
+}
 
     .brand-tagline {
         font-size: .82rem;

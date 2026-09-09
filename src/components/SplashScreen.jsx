@@ -2,8 +2,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import shield from "../assets/images/shield.png";
-import logo from "../assets/images/guardian-logo.png";
+import shield from "../assets/images/suraksha-shield.png";
+import logo from "../assets/images/suraksha-ai-logo.png";
 
 import "./SplashScreen.css";
 
@@ -20,6 +20,7 @@ export default function SplashScreen() {
       setTimeout(() => setStage(5), 4000),
       setTimeout(() => setStage(6), 5000),
       setTimeout(() => setStage(7), 6000),
+
       setTimeout(() => {
         navigate("/login", {
           replace: true,
@@ -32,91 +33,143 @@ export default function SplashScreen() {
 
   return (
     <div className="splash-container">
-      {/* Background Particles */}
+      {/* ==============================
+          BACKGROUND
+      ============================== */}
+
       <div className="particles" />
-
-      {/* Ambient Background Glow */}
       <div className="background-glow" />
-
-      {/* Floating Gold Particles */}
       <div className="gold-particles" />
 
-      {/* Stage 1 */}
+      {/* ==============================
+          STAGE 1 — AI ACTIVATION
+      ============================== */}
+
       <AnimatePresence>
         {stage >= 1 && (
           <>
             <motion.div
               className="emerald-dot"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1.4, opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{
+                scale: 0,
+                opacity: 0,
+              }}
+              animate={{
+                scale: 1.4,
+                opacity: 1,
+              }}
+              exit={{
+                opacity: 0,
+              }}
+              transition={{
+                duration: 0.8,
+              }}
             />
 
             <motion.div
               className="emerald-glow"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1.8 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1 }}
+              initial={{
+                opacity: 0,
+                scale: 0.5,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1.8,
+              }}
+              exit={{
+                opacity: 0,
+              }}
+              transition={{
+                duration: 1,
+              }}
             />
           </>
         )}
       </AnimatePresence>
 
-      {/* Stage 2 */}
+      {/* ==============================
+          STAGE 2 — RADAR SCANNER
+      ============================== */}
+
       <AnimatePresence>
         {stage >= 2 && (
           <motion.div
             className="scanner"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+            }}
+            exit={{
+              opacity: 0,
+            }}
           >
             <div className="ring ring1" />
             <div className="ring ring2" />
             <div className="ring ring3" />
+
             <div className="scanner-line" />
             <div className="scanner-grid" />
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Stage 3 */}
+      {/* ==============================
+          STAGE 3 — SHIELD OUTLINE
+      ============================== */}
+
       <AnimatePresence>
         {stage >= 3 && (
           <motion.div
             className="shield-outline"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{
+              opacity: 0,
+              scale: 0.9,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+            }}
+            transition={{
+              duration: 1,
+            }}
+            exit={{
+              opacity: 0,
+            }}
           >
             <svg width="250" height="280" viewBox="0 0 300 340">
               <defs>
                 <linearGradient id="shieldStroke">
                   <stop offset="0%" stopColor="#00ffb3" />
+
                   <stop offset="100%" stopColor="#FFD700" />
                 </linearGradient>
               </defs>
+
               <path
                 className="shield-path premium-path"
                 stroke="url(#shieldStroke)"
                 fill="none"
-                d="M150 20
-                L250 70
-                L235 210
-                L150 310
-                L65 210
-                L50 70
-                Z"
+                d="
+                  M150 20
+                  L250 70
+                  L235 210
+                  L150 310
+                  L65 210
+                  L50 70
+                  Z
+                "
               />
             </svg>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Stage 4 */}
+      {/* ==============================
+          STAGE 4 — SURAKSHA SHIELD
+      ============================== */}
+
       <AnimatePresence>
         {stage >= 4 && (
           <>
@@ -134,36 +187,42 @@ export default function SplashScreen() {
               transition={{
                 duration: 0.9,
               }}
-              alt="Shield"
+              alt="Suraksha AI Security Shield"
             />
 
             {/* Shield Glow */}
-            <div className="shield-glow"></div>
+            <div className="shield-glow" />
 
             {/* Metallic Light Sweep */}
-            <div className="light-sweep"></div>
+            <div className="light-sweep" />
 
-            {/* AI Network */}
+            {/* AI Detection Network */}
             <div className="network">
-              <span className="node node1"></span>
-              <span className="node node2"></span>
-              <span className="node node3"></span>
-              <span className="node node4"></span>
+              <span className="node node1" />
+              <span className="node node2" />
+              <span className="node node3" />
+              <span className="node node4" />
 
-              <span className="line line1"></span>
-              <span className="line line2"></span>
-              <span className="line line3"></span>
+              <span className="line line1" />
+              <span className="line line2" />
+              <span className="line line3" />
             </div>
           </>
         )}
       </AnimatePresence>
 
-      {/* Stage 5 */}
+      {/* ==============================
+          STAGE 5 — SECURITY PULSE
+      ============================== */}
+
       {stage >= 5 && (
         <>
           <motion.div
             className="gold-pulse"
-            initial={{ scale: 0.5, opacity: 0 }}
+            initial={{
+              scale: 0.5,
+              opacity: 0,
+            }}
             animate={{
               scale: 2.5,
               opacity: 0.7,
@@ -174,24 +233,29 @@ export default function SplashScreen() {
             }}
           />
 
-          <div className="gold-ring"></div>
+          <div className="gold-ring" />
         </>
       )}
 
-      {/* Stage 6 */}
+      {/* ==============================
+    STAGE 6 — SURAKSHA AI LOGO
+============================== */}
+
       <AnimatePresence>
         {stage >= 6 && (
-          <>
+          <div className="suraksha-logo-container">
             <motion.img
               src={logo}
-              className="guardian-logo"
+              className="suraksha-logo"
               initial={{
                 opacity: 0,
                 y: 40,
+                scale: 0.9,
               }}
               animate={{
                 opacity: 1,
                 y: 0,
+                scale: 1,
               }}
               exit={{
                 opacity: 0,
@@ -199,34 +263,16 @@ export default function SplashScreen() {
               transition={{
                 duration: 0.8,
               }}
-              alt="GuardianAI"
+              alt="Suraksha AI"
             />
-
-            <motion.p
-              className="tagline"
-              initial={{
-                opacity: 0,
-                y: 15,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              exit={{
-                opacity: 0,
-              }}
-              transition={{
-                delay: 0.4,
-                duration: 0.8,
-              }}
-            >
-              PREDICT • PROTECT • PREVENT
-            </motion.p>
-          </>
+          </div>
         )}
       </AnimatePresence>
 
-      {/* Stage 7 */}
+      {/* ==============================
+          STAGE 7 — INITIALIZATION
+      ============================== */}
+
       {stage >= 7 && (
         <div className="loading-wrapper">
           <motion.div
@@ -241,14 +287,18 @@ export default function SplashScreen() {
             }}
           />
 
-          <p className="loading-text">Initializing GuardianAI...</p>
+          <p className="loading-text">Initializing Suraksha AI...</p>
         </div>
       )}
-      {/* HUD Corners */}
-      <div className="corner corner-top-left"></div>
-      <div className="corner corner-top-right"></div>
-      <div className="corner corner-bottom-left"></div>
-      <div className="corner corner-bottom-right"></div>
+
+      {/* ==============================
+          HUD CORNERS
+      ============================== */}
+
+      <div className="corner corner-top-left" />
+      <div className="corner corner-top-right" />
+      <div className="corner corner-bottom-left" />
+      <div className="corner corner-bottom-right" />
     </div>
   );
 }

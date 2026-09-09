@@ -4,12 +4,12 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import { loginUser, registerUser } from "../services/authApi";
-import "./Login.css";
+
+import {  registerUser } from "../services/authApi";
+import "./login.css";
 
 // Images
-import guardianLogo from "../assets/images/guardian-logo.png";
+import surakshaLogo from "../assets/images/suraksha-ai-logo.png";
 
 import citySkyline from "../assets/images/city-skyline.png";
 import radarBg from "../assets/images/radar-bg.png";
@@ -33,7 +33,7 @@ import {
 
 function Login() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  
 
   // Role Selection State ("police" or "admin")
   const [selectedRole, setSelectedRole] = useState("police");
@@ -76,40 +76,16 @@ function Login() {
   };
 
   // Login Button
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
+
     setAuthError("");
     setAuthMessage("");
-    setIsSubmitting(true);
 
-    try {
-      const response = await loginUser({
-        email: loginData.email,
-        password: loginData.password,
-      });
-
-      const token = response?.token || response?.accessToken || response?.data?.token;
-      const backendUser = response?.user || response?.data?.user || {};
-      const userData = {
-        email: loginData.email,
-        fullName: backendUser.name || backendUser.fullName || loginData.email,
-        roleLabel:
-          (backendUser.role || selectedRole) === "police"
-            ? "Police Authority"
-            : "System Administrator",
-        ...backendUser,
-      };
-
-      if (!token) {
-        throw new Error("Login succeeded, but no token was returned by the server.");
-      }
-
-      const targetPath = login({ token, user: userData }, selectedRole);
-      navigate(targetPath);
-    } catch (error) {
-      setAuthError(error.message || "Unable to login. Please try again.");
-    } finally {
-      setIsSubmitting(false);
+    if (selectedRole === "police") {
+      navigate("/police/dashboard");
+    } else if (selectedRole === "admin") {
+      navigate("/dashboard");
     }
   };
 
@@ -148,7 +124,9 @@ function Login() {
       setSelectedRole("admin");
       setIsSignup(false);
     } catch (error) {
-      setAuthError(error.message || "Unable to create account. Please try again.");
+      setAuthError(
+        error.message || "Unable to create account. Please try again.",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -180,13 +158,13 @@ function Login() {
 
         <div className="brand-section">
           <img
-            src={guardianLogo}
-            alt="GuardianAI Logo"
+            src={surakshaLogo}
+            alt="SurakshaAI Logo"
             className="guardian-logo"
           />
 
           <h1 className="brand-title">
-            Guardian<span>AI</span>
+            Suraksha<span>AI</span>
           </h1>
 
           <p className="brand-tagline">
@@ -291,20 +269,45 @@ function Login() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" fill="rgba(245, 197, 66, 0.08)" />
+                    <path
+                      d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"
+                      fill="rgba(245, 197, 66, 0.08)"
+                    />
                     {/* Officer Cap */}
-                    <path d="M7.5 9c0-1.5 2-2.5 4.5-2.5s4.5 1 4.5 2.5v1.5h-9V9z" fill="#f5c542" stroke="none" />
-                    <ellipse cx="12" cy="7.2" rx="4" ry="1.2" fill="#f5c542" stroke="none" />
+                    <path
+                      d="M7.5 9c0-1.5 2-2.5 4.5-2.5s4.5 1 4.5 2.5v1.5h-9V9z"
+                      fill="#f5c542"
+                      stroke="none"
+                    />
+                    <ellipse
+                      cx="12"
+                      cy="7.2"
+                      rx="4"
+                      ry="1.2"
+                      fill="#f5c542"
+                      stroke="none"
+                    />
                     {/* Head */}
-                    <circle cx="12" cy="12" r="2.2" fill="#f5c542" stroke="none" />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="2.2"
+                      fill="#f5c542"
+                      stroke="none"
+                    />
                     {/* Shoulders */}
-                    <path d="M8 17.5c.6-1.8 2.2-2.5 4-2.5s3.4.7 4 2.5" fill="none" stroke="#f5c542" strokeWidth="1.6" />
+                    <path
+                      d="M8 17.5c.6-1.8 2.2-2.5 4-2.5s3.4.7 4 2.5"
+                      fill="none"
+                      stroke="#f5c542"
+                      strokeWidth="1.6"
+                    />
                   </svg>
                 </div>
 
                 <h1 className="welcome-heading">Welcome Back!</h1>
                 <p className="welcome-sub">
-                  Sign in to access your GuardianAI Security Dashboard.
+                  Sign in to access your SurakshaAI Security Dashboard.
                 </p>
               </div>
 
@@ -354,9 +357,10 @@ function Login() {
                       </svg>
                     </div>
 
-                    <h4 className="role-card-title">Police Authority</h4>
+                    <h4 className="role-card-title">Security Command</h4>
                     <p className="role-card-desc">
-                      Access real-time alerts, live monitoring, and incident response.
+                      Monitor live feeds, detect threats, and coordinate
+                      incident response.
                     </p>
                   </div>
 
@@ -391,7 +395,13 @@ function Login() {
                         strokeLinejoin="round"
                       >
                         <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" />
-                        <circle cx="12" cy="9.5" r="2.5" fill="#f5c542" stroke="none" />
+                        <circle
+                          cx="12"
+                          cy="9.5"
+                          r="2.5"
+                          fill="#f5c542"
+                          stroke="none"
+                        />
                         <path
                           d="M7.8 15.5c.6-1.8 2.3-3 4.2-3s3.6 1.2 4.2 3"
                           stroke="#f5c542"
@@ -409,9 +419,10 @@ function Login() {
                       </svg>
                     </div>
 
-                    <h4 className="role-card-title">Admin System</h4>
+                    <h4 className="role-card-title">System Administrator</h4>
                     <p className="role-card-desc">
-                      Manage system settings, users, and overall operations.
+                      Manage cameras, users, analytics, and system
+                      configuration.
                     </p>
                   </div>
                 </div>
@@ -467,12 +478,16 @@ function Login() {
               </div>
 
               {/* Login Button */}
-              {authError && <p className="auth-feedback auth-error">{authError}</p>}
-              {authMessage && <p className="auth-feedback auth-success">{authMessage}</p>}
+              {authError && (
+                <p className="auth-feedback auth-error">{authError}</p>
+              )}
+              {authMessage && (
+                <p className="auth-feedback auth-success">{authMessage}</p>
+              )}
 
-              <button type="submit" className="gold-login-button" disabled={isSubmitting}>
+              <button type="submit" className="gold-login-button">
                 <Shield size={20} />
-                <span>{isSubmitting ? "Logging in..." : "Login"}</span>
+                <span>Login</span>
               </button>
 
               {/* OTP Information Card */}
@@ -499,7 +514,7 @@ function Login() {
                   <span>Sign Up</span>
                 </button>
                 <p className="signup-footer-text">
-                  New to GuardianAI? Create an account to get started.
+                  New to SurakshaAI? Create an account to get started.
                 </p>
               </div>
             </form>
@@ -518,7 +533,7 @@ function Login() {
               {/* Subtitle */}
 
               <p className="login-subtitle">
-                Register your GuardianAI administrator account.
+                Register your SurakshaAI administrator account.
               </p>
 
               {/* ========================= */}
@@ -658,10 +673,18 @@ function Login() {
               {/* Create Account Button */}
               {/* ========================= */}
 
-              {authError && <p className="auth-feedback auth-error">{authError}</p>}
-              {authMessage && <p className="auth-feedback auth-success">{authMessage}</p>}
+              {authError && (
+                <p className="auth-feedback auth-error">{authError}</p>
+              )}
+              {authMessage && (
+                <p className="auth-feedback auth-success">{authMessage}</p>
+              )}
 
-              <button type="submit" className="login-button" disabled={isSubmitting}>
+              <button
+                type="submit"
+                className="login-button"
+                disabled={isSubmitting}
+              >
                 <UserPlus size={20} />
                 <span>{isSubmitting ? "Creating..." : "Create Account"}</span>
               </button>
@@ -695,8 +718,7 @@ function Login() {
           <div className="login-footer">
             <div className="footer-brand">
               <Lock size={16} />
-
-              <span>GuardianAI</span>
+              <span>SurakshaAI</span>
             </div>
 
             <p className="footer-text">Protecting what matters most.</p>

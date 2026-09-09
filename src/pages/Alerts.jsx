@@ -83,17 +83,17 @@ function Alert() {
   );
 
   const handleViewAlert = (alertId) => {
-    localStorage.setItem("guardianai-selected-alert-id", alertId);
+    localStorage.setItem("surakshaai-selected-alert-id", alertId);
     navigate("/alert-details");
   };
 
   const handleAcknowledgeAlert = async (alertId) => {
     const officerId =
-      localStorage.getItem("guardianai-officer-id") ||
+      localStorage.getItem("surakshaai-officer-id") ||
       window.prompt("Officer ID for acknowledgement");
     if (!officerId) return;
 
-    localStorage.setItem("guardianai-officer-id", officerId);
+    localStorage.setItem("surakshaai-officer-id", officerId);
 
     try {
       await acknowledgeAlert(alertId, officerId);

@@ -873,3 +873,145 @@
   color: var(--police-text-muted);
   gap: 14px;
 }
+
+/* =======================================================
+   POLICE DASHBOARD RESPONSIVE BREAKPOINTS
+======================================================= */
+
+@media (max-width: 1024px) {
+  .police-main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .police-sidebar {
+    position: fixed !important;
+    left: 0;
+    top: 0;
+    height: 100vh !important;
+    z-index: 1000 !important;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .police-sidebar.sidebar-open {
+    transform: translateX(0) !important;
+  }
+
+  .police-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .police-navbar {
+    padding: 12px 18px !important;
+  }
+
+  .police-search {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .police-page-container {
+    padding: 18px 16px;
+  }
+
+  .alerts-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-input-search,
+  .filter-select-box,
+  .filter-date-box {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .filter-select-box select {
+    width: 100%;
+  }
+
+  .police-alert-card-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .card-right-content {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 0;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .time-date-block {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .horizontal-stepper {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+  }
+
+  .stepper-node-item {
+    min-width: 70px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .police-page-container {
+    padding: 14px 10px;
+  }
+
+  .alerts-heading-title {
+    font-size: 1.35rem;
+  }
+
+  .emergency-btn {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+
+  .emergency-btn span {
+    display: inline-block;
+  }
+
+  .incident-bottom-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .row-key {
+    width: 100%;
+  }
+
+  .row-val-stack,
+  .row-val {
+    text-align: left;
+    width: 100%;
+  }
+
+  .confidence-progress-wrap {
+    width: 100%;
+  }
+
+  .cctv-video-viewport {
+    height: 180px;
+  }
+}
+

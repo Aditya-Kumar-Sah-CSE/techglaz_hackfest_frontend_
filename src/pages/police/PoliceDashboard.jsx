@@ -70,7 +70,7 @@ function toPoliceAlert(alert) {
     dateDisplay: normalized.date,
     fullTime: `${normalized.time}, ${normalized.date}`,
     confidence: normalized.confidence || 0,
-    detectedBy: "GuardianAI Detection",
+    detectedBy: "SurakshaAI Detection",
     alertType: normalized.type,
     assignedOfficer: "Unassigned",
     status: normalized.status,

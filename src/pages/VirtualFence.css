@@ -1,0 +1,1747 @@
+/* =========================================================
+   GUARDIAN AI — VIRTUAL FENCE
+   Geofence Management for Border Security
+========================================================= */
+
+.virtual-fence-page {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  padding: 24px 28px;
+  box-sizing: border-box;
+
+  background: #050d10;
+  color: #e5eef0;
+
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.virtual-fence-header {
+  width: 100%;
+  min-height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.virtual-fence-title-area {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  min-width: 0;
+}
+
+.virtual-fence-title-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(57, 211, 83, 0.4);
+  border-radius: 14px;
+
+  background: rgba(57, 211, 83, 0.08);
+
+  color: #39e979;
+
+  filter: drop-shadow(
+    0 0 8px rgba(57, 233, 121, 0.25)
+  );
+}
+
+.virtual-fence-heading-content {
+  min-width: 0;
+}
+
+.virtual-fence-title {
+  margin: 0;
+
+  color: #f1f6f7;
+
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 700;
+
+  letter-spacing: -0.6px;
+}
+
+.virtual-fence-subtitle {
+  margin: 5px 0 0;
+
+  color: #8fa6af;
+
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.virtual-fence-header-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  flex-shrink: 0;
+}
+
+.virtual-fence-system-status {
+  min-height: 38px;
+
+  padding: 0 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: 1px solid rgba(57, 211, 83, 0.35);
+  border-radius: 9px;
+
+  background: rgba(5, 38, 25, 0.72);
+
+  color: #48e978;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.virtual-fence-system-dot {
+  width: 8px;
+  height: 8px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #42e87a;
+
+  box-shadow:
+    0 0 8px rgba(66, 232, 122, 0.9);
+}
+
+.virtual-fence-date-time {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  min-width: 100px;
+
+  padding-left: 16px;
+
+  border-left: 1px solid #20353a;
+
+  color: #7e9197;
+
+  font-size: 11px;
+  line-height: 1.4;
+
+  text-align: right;
+}
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+.virtual-fence-stats {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin-bottom: 20px;
+}
+
+.virtual-fence-stat-card {
+  min-width: 0;
+  min-height: 100px;
+
+  padding: 17px 18px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  border: 1px solid #173238;
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(8, 24, 29, 0.98),
+      rgba(5, 17, 21, 0.98)
+    );
+
+  box-shadow:
+    0 5px 16px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.virtual-fence-stat-card:hover {
+  border-color: rgba(57, 211, 83, 0.3);
+  transform: translateY(-1px);
+}
+
+.virtual-fence-stat-icon {
+  width: 46px;
+  height: 46px;
+
+  flex: 0 0 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: rgba(57, 211, 83, 0.07);
+}
+
+.virtual-fence-stat-icon.green {
+  color: #3eea79;
+}
+
+.virtual-fence-stat-icon.red {
+  color: #ff555b;
+  background: rgba(255, 85, 91, 0.07);
+}
+
+.virtual-fence-stat-icon.yellow {
+  color: #f4ca2f;
+  background: rgba(244, 202, 47, 0.07);
+}
+
+.virtual-fence-stat-icon.blue {
+  color: #3f91ff;
+  background: rgba(63, 145, 255, 0.07);
+}
+
+.virtual-fence-stat-info {
+  min-width: 0;
+}
+
+.virtual-fence-stat-label {
+  margin-bottom: 6px;
+
+  color: #84989e;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.virtual-fence-stat-value {
+  color: #dce7e9;
+
+  font-size: 27px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.virtual-fence-stat-value.green {
+  color: #3eea79;
+}
+
+.virtual-fence-stat-value.red {
+  color: #ff555b;
+}
+
+.virtual-fence-stat-value.yellow {
+  color: #f4ca2f;
+}
+
+.virtual-fence-stat-extra {
+  margin-top: 6px;
+
+  color: #6d848a;
+
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.virtual-fence-stat-extra span {
+  margin-right: 8px;
+}
+
+.virtual-fence-stat-extra .green,
+.virtual-fence-stat-extra.green {
+  color: #3eea79;
+}
+
+.virtual-fence-stat-extra .yellow {
+  color: #f4ca2f;
+}
+
+.virtual-fence-stat-extra .red,
+.virtual-fence-stat-extra.red {
+  color: #ff555b;
+}
+
+/* =========================================================
+   MAIN AREA
+========================================================= */
+
+.virtual-fence-main {
+  width: 100%;
+  min-width: 0;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+
+  gap: 20px;
+
+  align-items: start;
+}
+
+/* =========================================================
+   LEFT / MAP AREA
+========================================================= */
+
+.virtual-fence-left {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.virtual-fence-map {
+  position: relative;
+
+  width: 100%;
+  height: calc(100vh - 365px);
+
+  min-height: 520px;
+  max-height: 650px;
+
+  overflow: hidden;
+
+  border: 1px solid #1b3b42;
+  border-radius: 16px;
+
+  background: #0b1d1c;
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.015);
+}
+
+.virtual-fence-map-background {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      rgba(3, 17, 18, 0.25),
+      rgba(3, 14, 15, 0.38)
+    ),
+    url("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/5/12/17");
+
+  background-size: cover;
+  background-position: center;
+
+  z-index: 1;
+}
+
+/* Tactical grid */
+
+.virtual-fence-map-background::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.14;
+
+  background-image:
+    linear-gradient(
+      rgba(63, 206, 132, 0.5) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(63, 206, 132, 0.5) 1px,
+      transparent 1px
+    );
+
+  background-size: 50px 50px;
+}
+
+/* =========================================================
+   MAP REGION
+========================================================= */
+
+.virtual-fence-map-region {
+  position: absolute;
+
+  top: 14px;
+  left: 14px;
+
+  z-index: 20;
+
+  padding: 9px 13px;
+
+  border: 1px solid rgba(91, 139, 143, 0.5);
+  border-radius: 7px;
+
+  background: rgba(4, 14, 17, 0.88);
+
+  color: #d3e1e5;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 0.7px;
+
+  backdrop-filter: blur(5px);
+}
+
+/* =========================================================
+   BORDER LINE
+========================================================= */
+
+.virtual-fence-border-line {
+  position: absolute;
+
+  left: -3%;
+  right: -3%;
+
+  top: 52%;
+
+  height: 3px;
+
+  z-index: 7;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #f1c62e 0 13px,
+      transparent 13px 20px
+    );
+
+  transform: rotate(3deg);
+
+  filter:
+    drop-shadow(
+      0 0 4px rgba(241, 198, 46, 0.5)
+    );
+}
+
+.virtual-fence-border-label {
+  position: absolute;
+
+  left: 2%;
+  top: 49%;
+
+  z-index: 9;
+
+  padding: 6px 8px;
+
+  border-radius: 5px;
+
+  background: rgba(4, 14, 17, 0.68);
+
+  color: #e5ecee;
+
+  font-size: 10px;
+  line-height: 1.35;
+
+  font-weight: 600;
+
+  letter-spacing: 0.8px;
+
+  text-shadow: 0 1px 4px #000;
+}
+
+/* =========================================================
+   SVG FENCES
+========================================================= */
+
+.virtual-fence-svg {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+.virtual-fence-polygon {
+  pointer-events: auto;
+
+  cursor: pointer;
+
+  transition:
+    fill-opacity 0.2s ease,
+    stroke-width 0.2s ease;
+}
+
+.virtual-fence-polygon:hover,
+.virtual-fence-polygon.selected {
+  filter:
+    drop-shadow(
+      0 0 5px currentColor
+    );
+}
+
+/* =========================================================
+   FENCE TAG
+========================================================= */
+
+.virtual-fence-tag {
+  position: absolute;
+
+  z-index: 18;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-width: 72px;
+
+  padding: 6px 9px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 3px solid currentColor;
+
+  border-radius: 6px;
+
+  background: rgba(3, 13, 15, 0.9);
+
+  color: #dce5e6;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(5px);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.virtual-fence-tag:hover,
+.virtual-fence-tag.selected {
+  background: rgba(7, 24, 28, 0.96);
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.06);
+}
+
+.virtual-fence-tag-name {
+  font-size: 11px;
+  line-height: 1.25;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.virtual-fence-tag-status {
+  margin-top: 3px;
+
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.virtual-fence-tag.active {
+  color: #42eb79;
+}
+
+.virtual-fence-tag.alert {
+  color: #f3ca2f;
+}
+
+.virtual-fence-tag.restricted {
+  color: #ff555c;
+}
+
+.virtual-fence-tag.inactive {
+  color: #a9b5b8;
+}
+
+/* =========================================================
+   MAP CONTROLS
+========================================================= */
+
+.virtual-fence-map-controls {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  z-index: 25;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border: 1px solid #42565d;
+  border-radius: 8px;
+
+  background: rgba(5, 16, 19, 0.92);
+
+  backdrop-filter: blur(5px);
+}
+
+.virtual-fence-map-control {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-bottom: 1px solid #293d42;
+
+  background: transparent;
+
+  color: #d4dfe2;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.virtual-fence-map-control:last-child {
+  border-bottom: 0;
+}
+
+.virtual-fence-map-control:hover {
+  color: #42ea79;
+
+  background:
+    rgba(15, 42, 31, 0.95);
+}
+
+/* =========================================================
+   MAP LEGEND
+========================================================= */
+
+.virtual-fence-map-legend {
+  position: absolute;
+
+  left: 14px;
+  bottom: 60px;
+
+  z-index: 25;
+
+  width: 165px;
+
+  padding: 13px;
+
+  border: 1px solid #354d54;
+  border-radius: 9px;
+
+  background: rgba(4, 14, 17, 0.92);
+
+  backdrop-filter: blur(7px);
+}
+
+.virtual-fence-legend-title {
+  margin: 0 0 10px;
+
+  color: #b9cbd0;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+
+  text-transform: uppercase;
+}
+
+.virtual-fence-legend-item {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin: 8px 0;
+
+  color: #c0ced2;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.virtual-fence-legend-dot {
+  width: 9px;
+  height: 9px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+}
+
+.virtual-fence-legend-dot.green {
+  background: #3fe979;
+}
+
+.virtual-fence-legend-dot.yellow {
+  background: #f2c82f;
+}
+
+.virtual-fence-legend-dot.gray {
+  background: #a9b5b8;
+}
+
+.virtual-fence-legend-dot.red {
+  background: #ff5158;
+}
+
+.virtual-fence-legend-border {
+  width: 18px;
+  height: 0;
+
+  flex-shrink: 0;
+
+  border-top: 2px dashed #f2c82f;
+}
+
+/* =========================================================
+   MAP SCALE
+========================================================= */
+
+.virtual-fence-map-scale {
+  position: absolute;
+
+  right: 14px;
+  bottom: 15px;
+
+  z-index: 25;
+
+  color: #dce5e6;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  text-align: right;
+
+  text-shadow: 0 1px 4px #000;
+}
+
+.virtual-fence-scale-line {
+  width: 55px;
+  height: 6px;
+
+  margin-top: 4px;
+
+  border-top: 2px solid #dce5e6;
+  border-left: 2px solid #dce5e6;
+  border-right: 2px solid #dce5e6;
+}
+
+/* =========================================================
+   RIGHT SIDEBAR
+========================================================= */
+
+.virtual-fence-sidebar {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+
+  max-height: 650px;
+
+  overflow-y: auto;
+
+  padding-right: 3px;
+}
+
+.virtual-fence-sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.virtual-fence-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.virtual-fence-sidebar::-webkit-scrollbar-thumb {
+  background: #29444b;
+  border-radius: 10px;
+}
+
+/* =========================================================
+   PANELS
+========================================================= */
+
+.virtual-fence-panel {
+  flex-shrink: 0;
+
+  padding: 16px;
+
+  border: 1px solid #19353c;
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8, 23, 28, 0.98),
+      rgba(5, 15, 19, 0.98)
+    );
+
+  box-shadow:
+    0 5px 16px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+/* =========================================================
+   PANEL HEADINGS
+========================================================= */
+
+.virtual-fence-panel-heading {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 14px;
+}
+
+.virtual-fence-panel-heading-icon {
+  flex-shrink: 0;
+
+  color: #3de978;
+}
+
+.virtual-fence-panel-heading-title {
+  margin: 0;
+
+  color: #e0eaed;
+
+  font-size: 16px;
+  line-height: 1.25;
+
+  font-weight: 700;
+}
+
+.virtual-fence-count {
+  min-width: 24px;
+  height: 24px;
+
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(57, 211, 83, 0.1);
+
+  color: #42e978;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   CREATE BUTTON
+========================================================= */
+
+.virtual-fence-create-button {
+  width: 100%;
+  min-height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 0 12px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #38e979,
+      #2de67a
+    );
+
+  color: #03130a;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.virtual-fence-create-button:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 5px 15px rgba(45, 230, 122, 0.2);
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.virtual-fence-form-group {
+  margin-bottom: 12px;
+}
+
+.virtual-fence-form-label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #8ca1a7;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.virtual-fence-input,
+.virtual-fence-select {
+  width: 100%;
+  height: 38px;
+
+  box-sizing: border-box;
+
+  padding: 0 10px;
+
+  border: 1px solid #1b3940;
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #09191e;
+
+  color: #c7d5d8;
+
+  font-family: inherit;
+
+  font-size: 12px;
+}
+
+.virtual-fence-input::placeholder {
+  color: #52686e;
+}
+
+.virtual-fence-input:focus,
+.virtual-fence-select:focus {
+  border-color: rgba(59, 232, 119, 0.6);
+
+  box-shadow:
+    0 0 0 2px rgba(59, 232, 119, 0.06);
+}
+
+/* =========================================================
+   EXISTING FENCES
+========================================================= */
+
+.virtual-fence-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.virtual-fence-list-item {
+  position: relative;
+
+  min-height: 58px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 8px 8px 12px;
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  background: rgba(9, 24, 28, 0.75);
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.virtual-fence-list-item::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+
+  width: 3px;
+
+  border-radius: 3px;
+
+  background: var(--item-color);
+}
+
+.virtual-fence-list-item:hover,
+.virtual-fence-list-item.selected {
+  border-color: rgba(57, 211, 83, 0.25);
+
+  background: rgba(18, 38, 42, 0.95);
+}
+
+.virtual-fence-list-info {
+  min-width: 0;
+
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: inherit;
+
+  font-family: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.virtual-fence-list-name {
+  color: #d4dfe1;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  line-height: 1.3;
+}
+
+.virtual-fence-list-sector {
+  margin-top: 3px;
+
+  color: #71878d;
+
+  font-size: 10px;
+}
+
+.virtual-fence-list-status {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 5px;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.virtual-fence-list-status.active {
+  color: #3eea79;
+}
+
+.virtual-fence-list-status.alert {
+  color: #f3c92f;
+}
+
+.virtual-fence-list-status.inactive {
+  color: #9aa8ac;
+}
+
+.virtual-fence-list-status.restricted {
+  color: #ff555c;
+}
+
+.virtual-fence-toggle-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+}
+
+/* =========================================================
+   FENCE ACTIONS
+========================================================= */
+
+.virtual-fence-list-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+}
+
+.virtual-fence-list-action {
+  width: 26px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #28434a;
+  border-radius: 5px;
+
+  background: #09181c;
+
+  color: #8fa2a7;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.virtual-fence-list-action:hover {
+  border-color: #3eea79;
+
+  color: #3eea79;
+
+  background: rgba(57, 211, 83, 0.08);
+}
+
+.virtual-fence-list-action.delete:hover {
+  border-color: #ff555c;
+
+  color: #ff555c;
+
+  background: rgba(255, 85, 92, 0.08);
+}
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+.virtual-fence-setting {
+  min-height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #172c31;
+
+  color: #91a5aa;
+
+  font-size: 11px;
+}
+
+.virtual-fence-setting:last-of-type {
+  border-bottom: 0;
+}
+
+.virtual-fence-setting-label {
+  color: #a3b4b8;
+}
+
+/* =========================================================
+   TOGGLE
+========================================================= */
+
+.virtual-fence-toggle {
+  position: relative;
+
+  width: 34px;
+  height: 18px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 20px;
+
+  background: #263c42;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.virtual-fence-toggle.active {
+  background: #32df78;
+}
+
+.virtual-fence-toggle-circle {
+  position: absolute;
+
+  top: 3px;
+  left: 3px;
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+
+  background: #c5d0d3;
+
+  transition: left 0.2s ease;
+}
+
+.virtual-fence-toggle.active
+.virtual-fence-toggle-circle {
+  left: 19px;
+
+  background: #ffffff;
+}
+
+/* =========================================================
+   SENSITIVITY
+========================================================= */
+
+.virtual-fence-sensitivity {
+  padding-top: 14px;
+}
+
+.virtual-fence-sensitivity-header {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 9px;
+
+  color: #91a5aa;
+
+  font-size: 11px;
+}
+
+.virtual-fence-sensitivity-value {
+  color: #3eea79;
+
+  font-size: 11px;
+}
+
+.virtual-fence-range {
+  width: 100%;
+
+  accent-color: #35e979;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   RECENT EVENTS
+========================================================= */
+
+.virtual-fence-events {
+  width: 100%;
+
+  margin-top: 20px;
+
+  padding: 16px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #18363d;
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(7, 22, 27, 0.98),
+      rgba(5, 16, 20, 0.98)
+    );
+
+  box-shadow:
+    0 5px 16px rgba(0, 0, 0, 0.18);
+}
+
+.virtual-fence-events-header {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 14px;
+}
+
+.virtual-fence-events-icon {
+  flex-shrink: 0;
+
+  color: #39e979;
+}
+
+.virtual-fence-events-title {
+  margin: 0;
+
+  color: #dce7e9;
+
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.virtual-fence-events-subtitle {
+  margin: 3px 0 0;
+
+  color: #73888e;
+
+  font-size: 11px;
+}
+
+.virtual-fence-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.virtual-fence-table {
+  width: 100%;
+
+  min-width: 720px;
+
+  border-collapse: collapse;
+}
+
+.virtual-fence-table th {
+  padding: 10px 9px;
+
+  background: rgba(7, 25, 30, 0.9);
+
+  color: #879ba0;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-align: left;
+}
+
+.virtual-fence-table td {
+  padding: 11px 9px;
+
+  border-top: 1px solid #152d33;
+
+  color: #aab9bd;
+
+  font-size: 11px;
+
+  white-space: nowrap;
+}
+
+.virtual-fence-table tbody tr:hover {
+  background: rgba(40, 101, 70, 0.08);
+}
+
+.virtual-fence-event-type {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #d0dcdf;
+}
+
+.virtual-fence-event-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+}
+
+.virtual-fence-event-dot.red {
+  background: #ff5158;
+}
+
+.virtual-fence-event-dot.yellow {
+  background: #f2c82f;
+}
+
+.virtual-fence-event-dot.green {
+  background: #3fe979;
+}
+
+.virtual-fence-event-status {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 4px 7px;
+
+  border: 1px solid;
+
+  border-radius: 5px;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.virtual-fence-event-status.high {
+  color: #ff5b61;
+
+  border-color: #a7373c;
+
+  background: rgba(150, 34, 40, 0.12);
+}
+
+.virtual-fence-event-status.medium {
+  color: #eec72e;
+
+  border-color: #90791d;
+
+  background: rgba(150, 119, 24, 0.12);
+}
+
+.virtual-fence-event-status.info {
+  color: #4d9cff;
+
+  border-color: #315f91;
+
+  background: rgba(44, 94, 145, 0.12);
+}
+
+/* =========================================================
+   RESPONSIVE — LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+  .virtual-fence-page {
+    padding: 20px;
+  }
+
+  .virtual-fence-main {
+    grid-template-columns:
+      minmax(0, 1fr)
+      290px;
+
+    gap: 16px;
+  }
+
+  .virtual-fence-title {
+    font-size: 27px;
+  }
+
+  .virtual-fence-stats {
+    gap: 12px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+  .virtual-fence-page {
+    padding: 18px;
+  }
+
+  .virtual-fence-header {
+    margin-bottom: 16px;
+  }
+
+  .virtual-fence-title {
+    font-size: 25px;
+  }
+
+  .virtual-fence-subtitle {
+    font-size: 13px;
+  }
+
+  .virtual-fence-date-time {
+    display: none;
+  }
+
+  .virtual-fence-main {
+    grid-template-columns: 1fr;
+  }
+
+  .virtual-fence-map {
+    height: 560px;
+    min-height: 560px;
+  }
+
+  .virtual-fence-sidebar {
+    max-height: none;
+
+    display: grid;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    overflow: visible;
+  }
+
+  .virtual-fence-events {
+    margin-top: 16px;
+  }
+}
+
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (max-width: 720px) {
+  .virtual-fence-stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .virtual-fence-main {
+    gap: 14px;
+  }
+
+  .virtual-fence-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .virtual-fence-map {
+    height: 500px;
+    min-height: 500px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .virtual-fence-page {
+    padding: 14px;
+  }
+
+  .virtual-fence-header {
+    align-items: flex-start;
+
+    gap: 12px;
+  }
+
+  .virtual-fence-title-area {
+    gap: 10px;
+  }
+
+  .virtual-fence-title-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-basis: 42px;
+
+    border-radius: 11px;
+  }
+
+  .virtual-fence-title {
+    font-size: 22px;
+  }
+
+  .virtual-fence-subtitle {
+    font-size: 12px;
+  }
+
+  .virtual-fence-system-status {
+    min-height: 32px;
+
+    padding: 0 10px;
+
+    font-size: 9px;
+  }
+
+  .virtual-fence-stats {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+    margin-bottom: 14px;
+  }
+
+  .virtual-fence-stat-card {
+    min-height: 88px;
+
+    padding: 13px;
+
+    gap: 10px;
+
+    border-radius: 11px;
+  }
+
+  .virtual-fence-stat-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-basis: 38px;
+  }
+
+  .virtual-fence-stat-label {
+    font-size: 10px;
+  }
+
+  .virtual-fence-stat-value {
+    font-size: 22px;
+  }
+
+  .virtual-fence-stat-extra {
+    font-size: 9px;
+  }
+
+  .virtual-fence-map {
+    height: 460px;
+    min-height: 460px;
+
+    border-radius: 12px;
+  }
+
+  .virtual-fence-map-region {
+    top: 10px;
+    left: 10px;
+
+    padding: 7px 9px;
+
+    font-size: 9px;
+  }
+
+  .virtual-fence-map-controls {
+    top: 10px;
+    right: 10px;
+  }
+
+  .virtual-fence-map-control {
+    width: 36px;
+    height: 36px;
+  }
+
+  .virtual-fence-map-legend {
+    left: 10px;
+    bottom: 58px;
+
+    width: 140px;
+
+    padding: 10px;
+  }
+
+  .virtual-fence-legend-title {
+    font-size: 10px;
+  }
+
+  .virtual-fence-legend-item {
+    font-size: 10px;
+  }
+
+  .virtual-fence-tag {
+    min-width: 60px;
+
+    padding: 4px 6px;
+  }
+
+  .virtual-fence-tag-name {
+    font-size: 9px;
+  }
+
+  .virtual-fence-tag-status {
+    font-size: 8px;
+  }
+
+  .virtual-fence-events {
+    padding: 12px;
+
+    border-radius: 11px;
+  }
+
+  .virtual-fence-events-title {
+    font-size: 15px;
+  }
+
+  .virtual-fence-events-subtitle {
+    font-size: 10px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+  .virtual-fence-page {
+    padding: 10px;
+  }
+
+  .virtual-fence-title-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-basis: 38px;
+  }
+
+  .virtual-fence-title {
+    font-size: 19px;
+  }
+
+  .virtual-fence-subtitle {
+    font-size: 10px;
+  }
+
+  .virtual-fence-system-status {
+    display: none;
+  }
+
+  .virtual-fence-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .virtual-fence-stat-card {
+    min-height: 82px;
+  }
+
+  .virtual-fence-map {
+    height: 400px;
+    min-height: 400px;
+  }
+
+  .virtual-fence-map-legend {
+    width: 125px;
+  }
+
+  .virtual-fence-legend-item {
+    font-size: 9px;
+  }
+
+  .virtual-fence-table {
+    min-width: 720px;
+  }
+}
