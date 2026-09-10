@@ -71,7 +71,7 @@
 
   color: #f1f6f7;
 
-  font-size: 30px;
+  font-size: 42px;
   line-height: 1.15;
   font-weight: 700;
 
@@ -83,7 +83,7 @@
 
   color: #8fa6af;
 
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
 }
 
@@ -111,7 +111,7 @@
 
   color: #48e978;
 
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 
   letter-spacing: 0.4px;
@@ -145,7 +145,7 @@
 
   color: #7e9197;
 
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.4;
 
   text-align: right;
@@ -244,7 +244,7 @@
 
   color: #84989e;
 
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 500;
 
   white-space: nowrap;
@@ -253,7 +253,7 @@
 .virtual-fence-stat-value {
   color: #dce7e9;
 
-  font-size: 27px;
+  font-size: 40px;
   line-height: 1;
   font-weight: 700;
 }
@@ -275,7 +275,7 @@
 
   color: #6d848a;
 
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.35;
 }
 
@@ -417,7 +417,7 @@
 
   color: #d3e1e5;
 
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
 
   letter-spacing: 0.7px;
@@ -472,7 +472,7 @@
 
   color: #e5ecee;
 
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.35;
 
   font-weight: 600;
@@ -565,7 +565,7 @@
 }
 
 .virtual-fence-tag-name {
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.25;
 
   font-weight: 700;
@@ -576,7 +576,7 @@
 .virtual-fence-tag-status {
   margin-top: 3px;
 
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -683,7 +683,7 @@
 
   color: #b9cbd0;
 
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
 
   letter-spacing: 0.8px;
@@ -701,7 +701,7 @@
 
   color: #c0ced2;
 
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -753,7 +753,7 @@
 
   color: #dce5e6;
 
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 600;
 
   text-align: right;
@@ -852,7 +852,7 @@
 
   color: #e0eaed;
 
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.25;
 
   font-weight: 700;
@@ -874,7 +874,7 @@
 
   color: #42e978;
 
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -908,7 +908,7 @@
 
   font-family: inherit;
 
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 
   cursor: pointer;
@@ -940,7 +940,7 @@
 
   color: #8ca1a7;
 
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
 }
 
@@ -964,7 +964,7 @@
 
   font-family: inherit;
 
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .virtual-fence-input::placeholder {
@@ -1063,7 +1063,7 @@
 .virtual-fence-list-name {
   color: #d4dfe1;
 
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
 
   line-height: 1.3;
@@ -1074,7 +1074,7 @@
 
   color: #71878d;
 
-  font-size: 10px;
+  font-size: 13px;
 }
 
 .virtual-fence-list-status {
@@ -1085,7 +1085,7 @@
 
   margin-top: 5px;
 
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -1177,7 +1177,7 @@
 
   color: #91a5aa;
 
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .virtual-fence-setting:last-of-type {
@@ -1253,13 +1253,13 @@
 
   color: #91a5aa;
 
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .virtual-fence-sensitivity-value {
   color: #3eea79;
 
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .virtual-fence-range {
@@ -1317,7 +1317,7 @@
 
   color: #dce7e9;
 
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 700;
 }
 
@@ -1326,7 +1326,7 @@
 
   color: #73888e;
 
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .virtual-fence-table-wrapper {
@@ -1350,7 +1350,7 @@
 
   color: #879ba0;
 
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
 
   text-align: left;
@@ -1363,7 +1363,7 @@
 
   color: #aab9bd;
 
-  font-size: 11px;
+  font-size: 14px;
 
   white-space: nowrap;
 }
@@ -1412,7 +1412,7 @@
 
   border-radius: 5px;
 
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -1458,7 +1458,7 @@
   }
 
   .virtual-fence-title {
-    font-size: 27px;
+    font-size: 36px;
   }
 
   .virtual-fence-stats {
@@ -1480,11 +1480,11 @@
   }
 
   .virtual-fence-title {
-    font-size: 25px;
+    font-size: 32px;
   }
 
   .virtual-fence-subtitle {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .virtual-fence-date-time {
@@ -1568,11 +1568,11 @@
   }
 
   .virtual-fence-title {
-    font-size: 22px;
+    font-size: 28px;
   }
 
   .virtual-fence-subtitle {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .virtual-fence-system-status {
@@ -1580,7 +1580,7 @@
 
     padding: 0 10px;
 
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .virtual-fence-stats {
@@ -1609,15 +1609,15 @@
   }
 
   .virtual-fence-stat-label {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .virtual-fence-stat-value {
-    font-size: 22px;
+    font-size: 32px;
   }
 
   .virtual-fence-stat-extra {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .virtual-fence-map {
@@ -1633,7 +1633,7 @@
 
     padding: 7px 9px;
 
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .virtual-fence-map-controls {
@@ -1656,11 +1656,11 @@
   }
 
   .virtual-fence-legend-title {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .virtual-fence-legend-item {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .virtual-fence-tag {
@@ -1670,11 +1670,11 @@
   }
 
   .virtual-fence-tag-name {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .virtual-fence-tag-status {
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .virtual-fence-events {
@@ -1684,11 +1684,11 @@
   }
 
   .virtual-fence-events-title {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   .virtual-fence-events-subtitle {
-    font-size: 10px;
+    font-size: 13px;
   }
 }
 
@@ -1709,11 +1709,11 @@
   }
 
   .virtual-fence-title {
-    font-size: 19px;
+    font-size: 28px;
   }
 
   .virtual-fence-subtitle {
-    font-size: 10px;
+    font-size: 14px;
   }
 
   .virtual-fence-system-status {
@@ -1738,7 +1738,7 @@
   }
 
   .virtual-fence-legend-item {
-    font-size: 9px;
+    font-size: 13px;
   }
 
   .virtual-fence-table {

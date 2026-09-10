@@ -78,8 +78,9 @@
 }
 
 .camera-title h1 {
-  font-size: 2rem;
+  font-size: 42px;
   font-weight: 700;
+  color: #ffffff;
 }
 
 .camera-title p {
@@ -87,7 +88,7 @@
 
   color: var(--text-light);
 
-  font-size: .95rem;
+  font-size: 16px;
 }
 
 .camera-actions {
@@ -98,7 +99,7 @@
 .camera-api-message {
   margin: 0 0 18px;
   color: #f5c542;
-  font-size: .9rem;
+  font-size: 15px;
 }
 
 /* ==========================================
@@ -132,6 +133,7 @@
   color: white;
 
   font-weight: 600;
+  font-size: 15px;
 }
 
 .add-camera-btn:hover {
@@ -240,13 +242,15 @@
 .stat-info span {
   color: var(--text-light);
 
-  font-size: .86rem;
+  font-size: 15px;
 
   margin-bottom: 8px;
 }
 
 .stat-info h2 {
-  font-size: 2rem;
+  font-size: 40px;
+  font-weight: 700;
+  color: #ffffff;
 
   margin-bottom: 6px;
 }
@@ -254,7 +258,7 @@
 .stat-info small {
   color: var(--primary);
 
-  font-size: .82rem;
+  font-size: 14px;
 }
 
 /* ==========================================================

@@ -63,7 +63,7 @@ function Navbar({ setSidebarOpen }) {
           </div>
 
           <div className="profile-info">
-            <h4>Admin</h4>
+            <h4 style={{ color: "#ffffff" }}>Admin</h4>
 
             <p>System Administrator</p>
           </div>

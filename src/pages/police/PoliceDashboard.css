@@ -58,7 +58,7 @@
 
 .police-subtitle {
   color: var(--police-gold) !important;
-  font-size: 0.78rem !important;
+  font-size: 0.92rem !important;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
@@ -128,14 +128,14 @@
 }
 
 .status-text-content h4 {
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   color: #ffffff;
   font-weight: 600;
   margin: 0;
 }
 
 .status-text-content p {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   margin-top: 2px;
 }
 

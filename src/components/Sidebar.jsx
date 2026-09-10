@@ -1,6 +1,6 @@
 // ===============================
 // Sidebar.jsx
-// GuardianAI Admin Panel
+// SurakshaAI Admin Panel
 // ===============================
 
 import { useNavigate, NavLink } from "react-router-dom";
@@ -43,7 +43,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           sidebarOpen ? "show" : ""
         }`}
         onClick={() => setSidebarOpen(false)}
-      ></div>
+      />
 
       {/* ===============================
           Sidebar
@@ -54,32 +54,39 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           sidebarOpen ? "sidebar-open" : ""
         }`}
       >
+
         {/* ===============================
             Logo
         =============================== */}
 
         <div className="sidebar-logo">
+
           <img
             src={logo}
-            alt="SurakshaAI"
+            alt="SurakshaAI Logo"
           />
 
           <div className="logo-text">
+
             <h2>
-              Guardian<span>AI</span>
+              Suraksha<span>AI</span>
             </h2>
 
             <p>
               Smart Surveillance. Safer Tomorrow.
             </p>
+
           </div>
+
         </div>
+
 
         {/* ===============================
             Admin Card
         =============================== */}
 
         <div className="admin-card">
+
           <div className="admin-left">
 
             <div className="admin-avatar">
@@ -87,29 +94,55 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             </div>
 
             <div>
-              <h3>Admin</h3>
 
-              <p>
+              <h3
+                style={{
+                  fontSize: "1.05rem",
+                  color: "#ffffff",
+                }}
+              >
+                Admin
+              </h3>
+
+              <p
+                style={{
+                  fontSize: "0.8rem",
+                }}
+              >
                 System Administrator
               </p>
 
-              <span className="online-status">
+              <span
+                className="online-status"
+                style={{
+                  fontSize: "0.8rem",
+                }}
+              >
                 ● Online
               </span>
+
             </div>
 
           </div>
 
           <ChevronDown size={18} />
+
         </div>
+
 
         {/* ===============================
             Main Menu
         =============================== */}
 
-        <div className="menu-title">
+        <div
+          className="menu-title"
+          style={{
+            fontSize: "0.78rem",
+          }}
+        >
           MAIN MENU
         </div>
+
 
         <nav className="sidebar-menu">
 
@@ -128,10 +161,15 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           >
             <LayoutDashboard size={20} />
 
-            <span>
+            <span
+              style={{
+                fontSize: "1rem",
+              }}
+            >
               Dashboard
             </span>
           </NavLink>
+
 
           {/* ===============================
               Live Monitoring
@@ -148,10 +186,15 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           >
             <Video size={20} />
 
-            <span>
+            <span
+              style={{
+                fontSize: "1rem",
+              }}
+            >
               Live Monitoring
             </span>
           </NavLink>
+
 
           {/* ===============================
               Alerts
@@ -168,14 +211,20 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           >
             <Bell size={20} />
 
-            <span>
+            <span
+              style={{
+                fontSize: "1rem",
+              }}
+            >
               Alerts
             </span>
 
             <div className="badge">
               3
             </div>
+
           </NavLink>
+
 
           {/* ===============================
               Camera Management
@@ -192,10 +241,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           >
             <ShieldAlert size={20} />
 
-            <span>
+            <span
+              style={{
+                fontSize: "1rem",
+              }}
+            >
               Camera Management
             </span>
+
           </NavLink>
+
 
           {/* ===============================
               Analytics
@@ -212,10 +267,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           >
             <BarChart3 size={20} />
 
-            <span>
+            <span
+              style={{
+                fontSize: "1rem",
+              }}
+            >
               Analytics
             </span>
+
           </NavLink>
+
 
           {/* ===============================
               Alert Details
@@ -232,10 +293,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           >
             <FileText size={20} />
 
-            <span>
+            <span
+              style={{
+                fontSize: "1rem",
+              }}
+            >
               Alert Details
             </span>
+
           </NavLink>
+
 
           {/* ===============================
               Border Surveillance Map
@@ -252,10 +319,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           >
             <MapPinned size={20} />
 
-            <span>
+            <span
+              style={{
+                fontSize: "1rem",
+              }}
+            >
               Border Surveillance
             </span>
+
           </NavLink>
+
 
           {/* ===============================
               Virtual Fence
@@ -272,20 +345,32 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           >
             <Fence size={20} />
 
-            <span>
+            <span
+              style={{
+                fontSize: "1rem",
+              }}
+            >
               Virtual Fence
             </span>
+
           </NavLink>
 
         </nav>
+
 
         {/* ===============================
             System
         =============================== */}
 
-        <div className="system-title">
+        <div
+          className="system-title"
+          style={{
+            fontSize: "0.78rem",
+          }}
+        >
           SYSTEM
         </div>
+
 
         {/* ===============================
             Logout
@@ -298,12 +383,19 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             navigate("/login");
           }}
         >
+
           <LogOut size={21} />
 
-          <span>
+          <span
+            style={{
+              fontSize: "1rem",
+            }}
+          >
             Logout
           </span>
+
         </button>
+
 
         {/* ===============================
             Sidebar Footer
@@ -318,13 +410,23 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             </div>
 
             <div>
-              <h4>
+
+              <h4
+                style={{
+                  fontSize: "0.85rem",
+                }}
+              >
                 SurakshaAI v1.0.0
               </h4>
 
-              <p>
+              <p
+                style={{
+                  fontSize: "0.75rem",
+                }}
+              >
                 All systems operational
               </p>
+
             </div>
 
           </div>

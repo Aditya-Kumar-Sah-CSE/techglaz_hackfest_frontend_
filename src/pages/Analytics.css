@@ -21,7 +21,7 @@
 }
 
 .analytics-header h1 {
-  font-size: 2rem;
+  font-size: 42px;
   font-weight: 700;
   color: #f8f8f8;
   margin-bottom: 6px;
@@ -29,7 +29,7 @@
 
 .analytics-header p {
   color: #9ca3af;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .analytics-filter {
@@ -38,7 +38,7 @@
   border: 1px solid #2d2d2d;
   border-radius: 10px;
   padding: 10px 18px;
-  font-size: 14px;
+  font-size: 15px;
   outline: none;
   cursor: pointer;
   transition: 0.3s;
@@ -99,19 +99,19 @@
 .card-content span {
   display: block;
   color: #9ca3af;
-  font-size: 14px;
+  font-size: 15px;
   margin-bottom: 6px;
 }
 
 .card-content h2 {
-  font-size: 2rem;
+  font-size: 40px;
   font-weight: 700;
   margin-bottom: 8px;
   color: #ffffff;
 }
 
 .card-content p {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
 }
 

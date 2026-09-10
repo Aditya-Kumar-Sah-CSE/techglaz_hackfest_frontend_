@@ -36,7 +36,8 @@ function Login() {
   
 
   // Role Selection State ("police" or "admin")
-  const [selectedRole, setSelectedRole] = useState("police");
+  // Role Selection State ("security" or "admin")
+const [selectedRole, setSelectedRole] = useState("security");
 
   // Password Visibility
   const [showPassword, setShowPassword] = useState(false);
@@ -76,18 +77,19 @@ function Login() {
   };
 
   // Login Button
-  const handleLogin = (e) => {
-    e.preventDefault();
+ // Login Button
+const handleLogin = (e) => {
+  e.preventDefault();
 
-    setAuthError("");
-    setAuthMessage("");
+  setAuthError("");
+  setAuthMessage("");
 
-    if (selectedRole === "police") {
-      navigate("/police/dashboard");
-    } else if (selectedRole === "admin") {
-      navigate("/dashboard");
-    }
-  };
+  // Store selected role for role-based permissions
+  localStorage.setItem("ibvapRole", selectedRole);
+
+  // Both roles use the same centralized dashboard
+  navigate("/dashboard");
+};
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -321,19 +323,19 @@ function Login() {
                   {/* Card 1 – Police Authority */}
                   <div
                     className={`role-card-item ${
-                      selectedRole === "police" ? "selected-police" : ""
-                    }`}
-                    onClick={() => setSelectedRole("police")}
+  selectedRole === "security" ? "selected-security" : ""
+}`}
+onClick={() => setSelectedRole("security")}
                   >
                     <div className="role-card-radio">
                       <div
                         className={`radio-outer ${
-                          selectedRole === "police" ? "active-green" : ""
+                          selectedRole === "security" ? "active-green" : ""
                         }`}
                       >
-                        {selectedRole === "police" && (
-                          <div className="radio-inner-green" />
-                        )}
+                        {selectedRole === "security" && (
+  <div className="radio-inner-green" />
+)}
                       </div>
                     </div>
 

@@ -61,7 +61,7 @@
 
 .border-map-title {
   margin: 0;
-  font-size: 30px;
+  font-size: 42px;
   line-height: 1.15;
   font-weight: 700;
   color: #f1f6f7;
@@ -70,7 +70,7 @@
 
 .border-map-subtitle {
   margin: 5px 0 0;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
   color: #8fa6af;
   letter-spacing: 0;
@@ -88,7 +88,7 @@
   border-radius: 9px;
   background: rgba(9, 34, 26, 0.8);
   color: #49df72;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.4px;
   text-transform: uppercase;
@@ -192,7 +192,7 @@
 
   color: #d3e1e5;
 
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.7px;
   text-transform: uppercase;
@@ -227,7 +227,7 @@
 
   color: #45df6c;
 
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -242,7 +242,7 @@
 
   color: #7ee99a;
 
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -341,7 +341,7 @@
 
   color: #d6e2e5;
 
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 600;
 
   white-space: nowrap;
@@ -379,7 +379,7 @@
 
   color: #d7e0e1;
 
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.35;
   font-weight: 600;
   letter-spacing: 0.8px;
@@ -468,7 +468,7 @@
 
   color: #b9cbd0;
 
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.8px;
 
@@ -484,7 +484,7 @@
 
   color: #c0ced2;
 
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -552,7 +552,7 @@
 
   color: #a5b8bd;
 
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 500;
 
   white-space: nowrap;
@@ -644,7 +644,7 @@
 
   color: #e0eaed;
 
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.25;
   font-weight: 700;
 }
@@ -691,7 +691,7 @@
 
   color: #dce6e9;
 
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.35;
   font-weight: 700;
 }
@@ -701,7 +701,7 @@
 
   color: #7f969d;
 
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .border-map-warning {
@@ -713,7 +713,7 @@
 
   color: #f4c931;
 
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -743,7 +743,7 @@
 
   color: #91a5ab;
 
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .border-map-data-row:last-child {
@@ -755,7 +755,7 @@
 
   color: #d0dcdf;
 
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
 
   text-align: right;
@@ -774,7 +774,7 @@
 
   color: #8fa4aa;
 
-  font-size: 12px;
+  font-size: 14px;
 
   border-bottom: 1px solid rgba(43, 64, 69, 0.5);
 }
@@ -784,7 +784,7 @@
 }
 
 .border-map-surveillance-value {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -820,7 +820,7 @@
 
   color: #ff6269;
 
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -894,7 +894,7 @@
 .border-map-alert-title {
   color: #dce7e9;
 
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.35;
   font-weight: 700;
 }
@@ -906,7 +906,7 @@
 
   color: #7f969c;
 
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.4;
 }
 
@@ -920,7 +920,7 @@
 
   color: #ff5b63;
 
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
 
   text-transform: uppercase;
@@ -955,7 +955,7 @@
   color: #c0cdd1;
 
   font-family: inherit;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
 
   text-align: left;
@@ -1005,7 +1005,7 @@
   }
 
   .border-map-title {
-    font-size: 27px;
+    font-size: 36px;
   }
 
   .border-map-card {
@@ -1027,11 +1027,11 @@
   }
 
   .border-map-title {
-    font-size: 25px;
+    font-size: 32px;
   }
 
   .border-map-subtitle {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .border-map-content {
@@ -1080,17 +1080,17 @@
   }
 
   .border-map-title {
-    font-size: 22px;
+    font-size: 28px;
   }
 
   .border-map-subtitle {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .border-map-live {
     min-height: 34px;
     padding: 0 11px;
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .border-map-sidebar {
@@ -1140,12 +1140,12 @@
   }
 
   .border-map-title {
-    font-size: 20px;
+    font-size: 28px;
   }
 
   .border-map-subtitle {
     margin-top: 3px;
-    font-size: 11px;
+    font-size: 14px;
   }
 
   .border-map-live {
@@ -1165,7 +1165,7 @@
 
     padding: 7px 9px;
 
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .border-map-controls {
@@ -1188,7 +1188,7 @@
   }
 
   .border-map-legend-item {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .border-map-status-bar {
@@ -1199,7 +1199,7 @@
 
   .border-map-status-item {
     padding: 0 9px;
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .border-map-marker-icon {
@@ -1213,19 +1213,19 @@
   }
 
   .border-map-marker-label {
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .border-map-sector-title {
     top: 8px;
     left: 9px;
-    font-size: 10px;
+    font-size: 14px;
   }
 
   .border-map-sector-status {
     top: 25px;
     left: 9px;
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .border-map-card {
@@ -1234,7 +1234,7 @@
   }
 
   .border-map-card-title {
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 
@@ -1244,11 +1244,11 @@
 
 @media (max-width: 380px) {
   .border-map-title {
-    font-size: 18px;
+    font-size: 28px;
   }
 
   .border-map-subtitle {
-    font-size: 10px;
+    font-size: 14px;
   }
 
   .border-map-canvas {
@@ -1261,11 +1261,11 @@
   }
 
   .border-map-legend-item {
-    font-size: 9px;
+    font-size: 13px;
   }
 
   .border-map-status-item {
-    font-size: 8px;
+    font-size: 12px;
   }
 }
 

@@ -193,6 +193,7 @@
 }
 
 .admin-left h3 {
+    color: #ffffff !important;
     font-size: 0.95rem;
     margin-bottom: 3px;
 }
@@ -699,6 +700,7 @@
 }
 
 .profile-info h4 {
+    color: #ffffff !important;
     font-size: 0.82rem;
     margin-bottom: 2px;
 }
@@ -747,7 +749,7 @@
 
     color: #ffffff;
 
-    font-size: 1.9rem;
+    font-size: 42px;
     font-weight: 700;
 
     line-height: 1.2;
@@ -760,7 +762,7 @@
 
     color: var(--text-secondary);
 
-    font-size: 0.9rem;
+    font-size: 16px;
 
     line-height: 1.4;
 }
@@ -768,7 +770,7 @@
 .dashboard-tagline {
     color: #819596;
 
-    font-size: 0.78rem;
+    font-size: 14px;
 
     font-style: italic;
 
@@ -891,7 +893,7 @@
 .stat-title {
     color: var(--text-secondary);
 
-    font-size: 0.78rem;
+    font-size: 16px;
 
     margin: 0;
 
@@ -901,7 +903,7 @@
 .stat-value {
     color: #ffffff;
 
-    font-size: 2rem;
+    font-size: 40px;
 
     line-height: 1;
 
@@ -917,7 +919,7 @@
 
     color: #789091;
 
-    font-size: 0.7rem;
+    font-size: 13px;
 
     white-space: nowrap;
 
@@ -936,7 +938,7 @@
 
     border-radius: 5px;
 
-    font-size: 0.55rem;
+    font-size: 13px;
 
     font-weight: 600;
 }
@@ -1025,7 +1027,7 @@
 
     color: white;
 
-    font-size: 0.46rem;
+    font-size: 13px;
     font-weight: 600;
 }
 
@@ -1110,7 +1112,7 @@
 
     color: #edf5f5;
 
-    font-size: 0.95rem;
+    font-size: 20px;
 
     font-weight: 600;
 
@@ -1139,7 +1141,7 @@
 
     gap: 5px;
 
-    font-size: 0.62rem;
+    font-size: 14px;
 
     cursor: pointer;
 
@@ -1338,13 +1340,13 @@
 .network-total strong {
     color: #ffffff;
 
-    font-size: 1.35rem;
+    font-size: 38px;
 }
 
 .network-total span {
     color: #91a7a8;
 
-    font-size: 0.65rem;
+    font-size: 14px;
 }
 
 .network-status-row {
@@ -1356,13 +1358,13 @@
 
     color: #91a7a8;
 
-    font-size: 0.67rem;
+    font-size: 14px;
 }
 
 .network-status-row strong {
     color: #ffffff;
 
-    font-size: 0.72rem;
+    font-size: 15px;
 
     min-width: 15px;
 }
@@ -1382,7 +1384,7 @@
 
     width: 100%;
 
-    height: 31px;
+    height: 36px;
 
     display: flex;
 
@@ -1401,7 +1403,7 @@
 
     color: #dff9ed;
 
-    font-size: 0.63rem;
+    font-size: 14px;
 
     cursor: pointer;
 
@@ -1469,7 +1471,7 @@
 
     color: #dbe5e5;
 
-    font-size: 0.72rem;
+    font-size: 15px;
 
     min-width: 0;
 }
@@ -1495,7 +1497,7 @@
 
     color: #d0dfdf;
 
-    font-size: 0.68rem;
+    font-size: 14px;
 
     white-space: nowrap;
 
@@ -1505,7 +1507,7 @@
 .response-time {
     color: #718789;
 
-    font-size: 0.62rem;
+    font-size: 13px;
 
     text-align: right;
 
@@ -1537,7 +1539,7 @@
 
     padding: 5px 7px;
 
-    font-size: 0.55rem;
+    font-size: 13px;
 
     white-space: nowrap;
 }
@@ -1637,7 +1639,7 @@
 .activity-info strong {
     color: #dbe6e6;
 
-    font-size: 0.72rem;
+    font-size: 15px;
 
     font-weight: 600;
 
@@ -1651,7 +1653,7 @@
 .activity-info span {
     color: #6e8587;
 
-    font-size: 0.61rem;
+    font-size: 14px;
 
     margin-top: 2px;
 
@@ -1665,7 +1667,7 @@
 .activity-item time {
     color: #789091;
 
-    font-size: 0.6rem;
+    font-size: 13px;
 
     white-space: nowrap;
 }
@@ -1680,7 +1682,7 @@
 }
 
 .trend-select {
-    height: 27px;
+    height: 30px;
 
     padding: 0 7px;
 
@@ -1693,7 +1695,7 @@
 
     color: #b4c5c6;
 
-    font-size: 0.58rem;
+    font-size: 13px;
 
     outline: none;
 
@@ -1703,7 +1705,7 @@
 
 /* =======================================================
    CHART LEGEND
-======================================================= */
+====================================================== */
 
 .chart-legend {
     display: flex;
@@ -1726,7 +1728,7 @@
 
     color: #859b9c;
 
-    font-size: 0.53rem;
+    font-size: 13px;
 }
 
 .legend-dot {
@@ -1783,7 +1785,7 @@
 
     color: #617879;
 
-    font-size: 0.5rem;
+    font-size: 12px;
 
     text-align: right;
 
@@ -1878,7 +1880,7 @@
 .chart-label {
     color: #6e8586;
 
-    font-size: 0.5rem;
+    font-size: 12px;
 
     white-space: nowrap;
 }
@@ -1946,7 +1948,7 @@
     }
 
     .stat-value {
-        font-size: 1.45rem;
+        font-size: 36px;
     }
 
     .navbar-search {
@@ -2230,15 +2232,15 @@
     }
 
     .dashboard-welcome h1 {
-        font-size: 1.35rem;
+        font-size: 28px;
     }
 
     .dashboard-welcome p {
-        font-size: 0.72rem;
+        font-size: 15px;
     }
 
     .dashboard-tagline {
-        font-size: 0.62rem;
+        font-size: 13px;
     }
 
     /* Stats */
@@ -2267,7 +2269,7 @@
     }
 
     .stat-value {
-        font-size: 1.45rem;
+        font-size: 32px;
     }
 
     /* Dashboard */
@@ -2356,7 +2358,7 @@
     }
 
     .chart-label {
-        font-size: 0.47rem;
+        font-size: 11px;
     }
 
     .chart-legend {
@@ -2391,11 +2393,11 @@
     }
 
     .dashboard-welcome h1 {
-        font-size: 1.2rem;
+        font-size: 28px;
     }
 
     .dashboard-welcome p {
-        font-size: 0.67rem;
+        font-size: 15px;
     }
 
     .stat-card {
@@ -2415,15 +2417,15 @@
     }
 
     .stat-title {
-        font-size: 0.63rem;
+        font-size: 14px;
     }
 
     .stat-value {
-        font-size: 1.3rem;
+        font-size: 30px;
     }
 
     .stat-subtitle {
-        font-size: 0.56rem;
+        font-size: 12px;
     }
 
     .dashboard-card {
@@ -2431,11 +2433,11 @@
     }
 
     .card-header h3 {
-        font-size: 0.78rem;
+        font-size: 18px;
     }
 
     .view-all-btn {
-        font-size: 0.55rem;
+        font-size: 13px;
     }
 
     .network-map {
@@ -2443,7 +2445,7 @@
     }
 
     .system-operational {
-        font-size: 0.48rem;
+        font-size: 12px;
 
         padding: 4px 5px;
     }
@@ -2456,15 +2458,15 @@
     }
 
     .activity-info strong {
-        font-size: 0.59rem;
+        font-size: 14px;
     }
 
     .activity-info span {
-        font-size: 0.5rem;
+        font-size: 13px;
     }
 
     .activity-item time {
-        font-size: 0.48rem;
+        font-size: 12px;
     }
 
     .chart-legend {

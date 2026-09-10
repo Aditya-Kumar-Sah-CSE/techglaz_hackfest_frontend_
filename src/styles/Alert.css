@@ -59,7 +59,7 @@
 }
 
 .alerts-heading h1{
-    font-size:2.2rem;
+    font-size:42px;
     color:var(--text);
     margin-bottom:8px;
     font-weight:700;
@@ -67,7 +67,7 @@
 
 .alerts-heading p{
     color:var(--muted);
-    font-size:1rem;
+    font-size:16px;
 }
 
 /* =======================================================
